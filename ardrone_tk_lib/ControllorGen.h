@@ -12,12 +12,18 @@ namespace tk {
 		string cmdpack;
 	public:
 		ControllorGen(CommandId* cmdid);
+
 		string cmd_takeoff();
 		string cmd_land();
 		string cmd_emergency();
 		string cmd_move(bool,float,float,float,float);
+		string cmd_move_mag(bool, float, float, float, float, float, float);
 		string cmd_ftrims();
-		string cmd_mtrims();
+		string cmd_calib(int);
+		string cmd_config(string,string);
+		string cmd_config_ids(string, string, string);
+		string cmd_watchdog();
+
 		void operator<<(const string);
 		void pack(const string);
 		void clear_pack();

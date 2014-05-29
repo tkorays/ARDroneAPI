@@ -2,6 +2,7 @@
 #define _TK_COMDEF_H_
 #pragma once
 #define LF_DEF '\12'
+#define CR_DEF '\12'
 
 
 
