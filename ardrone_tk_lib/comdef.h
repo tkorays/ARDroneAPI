@@ -3,6 +3,8 @@
 #pragma once
 #define LF_DEF '\12'
 #define CR_DEF '\12'
+#define NAVDATA_PORT 5554
+#define AT_COMMAND_PORT 5556
 
 
 

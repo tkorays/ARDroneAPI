@@ -23,6 +23,7 @@ namespace tk {
 		string cmd_config(string,string);
 		string cmd_config_ids(string, string, string);
 		string cmd_watchdog();
+		string cmd_control();
 
 		void operator<<(const string);
 		void pack(const string);

@@ -10,7 +10,7 @@ ControllorGen::ControllorGen(CommandId* cmdid) {
 	cmd_id = cmdid;
 }
 
-// AT*REF for take off
+// AT*REF for takeoff
 string ControllorGen::cmd_takeoff() {
 	stringstream cmd_str;
 	cmd_str<<"AT*REF=";
@@ -18,7 +18,7 @@ string ControllorGen::cmd_takeoff() {
 	return cmd_str.str();
 }
 
-// AT*REF for land
+// AT*REF for landding
 string ControllorGen::cmd_land() {
 	stringstream cmd_str;
 	cmd_str << "AT*REF=";
@@ -108,6 +108,11 @@ string ControllorGen::cmd_watchdog() {
 	return "";
 }
 
+string ControllorGen::cmd_control() {
+	stringstream cmd_str;
+	cmd_str << "AT*CTRL=0" << CR_DEF;
+	return cmd_str.str();
+}
 
 // pack command
 void ControllorGen::operator << (const string cmd) {

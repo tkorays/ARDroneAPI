@@ -39,7 +39,12 @@
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
-  <PropertyGroup />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <IncludePath>$(BOOST);$(IncludePath)</IncludePath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <IncludePath>$(BOOST);$(IncludePath)</IncludePath>
+  </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
       <PrecompiledHeader>
@@ -76,16 +81,23 @@
     <Text Include="ReadMe.txt" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="ARDrone.h" />
     <ClInclude Include="comdef.h" />
     <ClInclude Include="CommandId.h" />
+    <ClInclude Include="CommandSender.h" />
     <ClInclude Include="config.h" />
     <ClInclude Include="ControllorGen.h" />
     <ClInclude Include="helper.h" />
+    <ClInclude Include="NavData.h" />
+    <ClInclude Include="NavDataReceiver.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="CommandId.cpp" />
+    <ClCompile Include="CommandSender.cpp" />
     <ClCompile Include="ControllorGen.cpp" />
     <ClCompile Include="helper.cpp" />
+    <ClCompile Include="NavData.cpp" />
+    <ClCompile Include="NavDataReceiver.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
