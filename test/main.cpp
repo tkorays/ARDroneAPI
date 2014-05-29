@@ -13,6 +13,7 @@ int main(int argc, char** argv) {
 	cout << gen.cmd_takeoff();
 	cout << gen.cmd_land();
 	cout << gen.cmd_emergency();
+	cout << gen.cmd_ftrims();
 
 	gen.clear_pack();
 	gen<<gen.cmd_takeoff();

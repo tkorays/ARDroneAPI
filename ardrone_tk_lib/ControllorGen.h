@@ -16,6 +16,8 @@ namespace tk {
 		string cmd_land();
 		string cmd_emergency();
 		string cmd_move(bool,float,float,float,float);
+		string cmd_ftrims();
+		string cmd_mtrims();
 		void operator<<(const string);
 		void pack(const string);
 		void clear_pack();

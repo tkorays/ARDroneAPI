@@ -11,7 +11,7 @@ namespace tk {
 		void inc();
 		void operator++();
 		void reset();
-		long get_id(bool);
+		long get_id(bool auto_inc=true);
 	};
 }
 

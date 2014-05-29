@@ -14,7 +14,7 @@ void CommandId::operator++() {
 void CommandId::reset() {
 	id = 0;
 }
-long CommandId::get_id(bool auto_inc=true) {
+long CommandId::get_id(bool auto_inc) {
 	if (auto_inc) {
 		id++;
 	}
