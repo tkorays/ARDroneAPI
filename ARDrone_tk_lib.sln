@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.21005.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ardrone_tk_lib", "ardrone_tk_lib\ardrone_tk_lib.vcxproj", "{36E7ABA6-2F74-4641-BE27-6F150F337F48}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "test", "test\test.vcxproj", "{7DF232D3-D4C4-4F65-8852-E0D8E1D3A549}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
+		Release|Win32 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{36E7ABA6-2F74-4641-BE27-6F150F337F48}.Debug|Win32.ActiveCfg = Debug|Win32
+		{36E7ABA6-2F74-4641-BE27-6F150F337F48}.Debug|Win32.Build.0 = Debug|Win32
+		{36E7ABA6-2F74-4641-BE27-6F150F337F48}.Release|Win32.ActiveCfg = Release|Win32
+		{36E7ABA6-2F74-4641-BE27-6F150F337F48}.Release|Win32.Build.0 = Release|Win32
+		{7DF232D3-D4C4-4F65-8852-E0D8E1D3A549}.Debug|Win32.ActiveCfg = Debug|Win32
+		{7DF232D3-D4C4-4F65-8852-E0D8E1D3A549}.Debug|Win32.Build.0 = Debug|Win32
+		{7DF232D3-D4C4-4F65-8852-E0D8E1D3A549}.Release|Win32.ActiveCfg = Release|Win32
+		{7DF232D3-D4C4-4F65-8852-E0D8E1D3A549}.Release|Win32.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
