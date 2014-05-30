@@ -35,7 +35,7 @@ void* ardrone_control(void* param) {
 
 	sockaddr_in send_to_addr;
 	send_to_addr.sin_family = AF_INET;
-	send_to_addr.sin_addr.s_addr = inet_addr("192.168.1.1");
+	send_to_addr.sin_addr.S_un.S_addr = inet_addr("192.168.1.1");
 	send_to_addr.sin_port = ntohs(5556);
 	status = connect(send_udp_socket, (sockaddr*)&send_to_addr, sizeof(send_to_addr));
 	check_status(status, "connect failed...");
