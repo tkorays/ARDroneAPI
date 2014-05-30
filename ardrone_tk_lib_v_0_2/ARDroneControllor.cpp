@@ -14,7 +14,7 @@ bool ARDroneControllor::init_at_cmd_ctrl() {
 	/*
 	sockaddr_in localaddr;
 	localaddr.sin_family = AF_INET;
-	localaddr.sin_port = htons(5556);
+	localaddr.sin_port = htons(AT_PORT);
 	localaddr.sin_addr.S_un.S_addr = inet_addr("192.168.1.2");
 	bind(at_cmd_sck, (sockaddr*)&localaddr, 0);
 	*/
@@ -30,7 +30,7 @@ bool ARDroneControllor::init_at_cmd_ctrl() {
 	return true;
 }
 bool ARDroneControllor::send_at_cmd_ctrl(const string cmd) {
-	if (cmd.size()<=0) {
+	if (cmd.size()<=0 || !at_cmd_sck_running) {
 		return false;
 	}
 	int status = sendto(at_cmd_sck, cmd.data(), cmd.size(), 0, \

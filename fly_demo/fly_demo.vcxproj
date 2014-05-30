@@ -84,6 +84,7 @@
     <ClCompile Include="..\ardrone_tk_lib_v_0_2\ATCmdGenerator.cpp" />
     <ClCompile Include="..\ardrone_tk_lib_v_0_2\CommandId.cpp" />
     <ClCompile Include="..\ardrone_tk_lib_v_0_2\helper.cpp" />
+    <ClCompile Include="..\ardrone_tk_lib_v_0_2\NavDataClient.cpp" />
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

@@ -4,6 +4,9 @@
 #define LF_DEF '\x0a' // <LF>
 #define CR_DEF '\x0d' // <CR>
 
+#define LOCAL_IP "192.168.1.2"
+#define ARDRONE_IP "192.168.1.1"
+
 
 #define TAKEOFF_CODE 0x11540200
 #define LAND_CODE    0x11540000

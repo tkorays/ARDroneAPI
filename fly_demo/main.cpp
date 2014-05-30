@@ -11,6 +11,7 @@ using namespace std;
 #include <helper.h>
 #include <ATCmdGenerator.h>
 #include <ARDroneControllor.h>
+#include <NavDataClient.h>
 using namespace tk;
 
 void check_status(int status, const string msg) {
@@ -132,18 +133,37 @@ void* ardrone_control_2(void* param) {
 	return NULL;
 }
 void* navdata_recv(void* param) {
+	CommandId cmd_id;
+	ATCmdGenerator gen(&cmd_id);
 
+	tk::net_prepare();
+	ARDroneControllor ctrl;
+	ctrl.init_at_cmd_ctrl();
+	ctrl.send_at_cmd_ctrl(gen.cmd_land());
+
+	NavDataClient nav;
+	nav.exit_bootstrap(ctrl, gen);
+	int len = 1024;
+	char* data = new char[1024];
+	// ×èÈû½ÓÊÕ
+	while (true) {
+		nav.block_recv(data, len);
+		cout << data << endl;
+	}
+
+	nav.release_navdata_client();
+	ctrl.release_at_cmd_ctrl();
 	return NULL;
 }
 int main(int argc,char** argv) {
 	cout << "start..." << endl;
-	pthread_t pid;
-	pthread_create(&pid, NULL, ardrone_control, NULL);
+	//pthread_t pid;
+	//pthread_create(&pid, NULL, ardrone_control, NULL);
 
 	pthread_t pid_nav;
 	pthread_create(&pid_nav, NULL, navdata_recv, NULL);
 
-	pthread_join(pid,NULL);
+	//pthread_join(pid,NULL);
 	pthread_join(pid_nav, NULL);
 	return 0;
 }

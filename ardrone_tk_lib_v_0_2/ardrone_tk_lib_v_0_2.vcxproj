@@ -84,12 +84,14 @@
     <ClInclude Include="config.h" />
     <ClInclude Include="ARDroneControllor.h" />
     <ClInclude Include="helper.h" />
+    <ClInclude Include="NavDataClient.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="ARDroneControllor.cpp" />
     <ClCompile Include="ATCmdGenerator.cpp" />
     <ClCompile Include="CommandId.cpp" />
     <ClCompile Include="helper.cpp" />
+    <ClCompile Include="NavDataClient.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
