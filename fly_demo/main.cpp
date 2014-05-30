@@ -8,7 +8,9 @@ using namespace std;
 #include <WinSock2.h>
 #include <pthread.h>
 
+#include <helper.h>
 #include <ATCmdGenerator.h>
+#include <ARDroneControllor.h>
 using namespace tk;
 
 void check_status(int status, const string msg) {
@@ -86,6 +88,36 @@ void* ardrone_control(void* param) {
 	return NULL;
 }
 
+void* ardrone_control_2(void* param) {
+	CommandId cmd_id;
+	ATCmdGenerator gen(&cmd_id);
+
+	tk::net_prepare();
+	ARDroneControllor ctrl;
+	int key;
+	ctrl.init_at_cmd_ctrl();
+	while (true) {
+		key = getchar();
+		if (key=='x') {
+			break;
+		}
+		switch (key) {
+		case 'j':
+			ctrl.send_at_cmd_ctrl(gen.cmd_takeoff());
+			break;
+		case 'k':
+			ctrl.send_at_cmd_ctrl(gen.cmd_land());
+			break;
+		case 'l':
+			ctrl.send_at_cmd_ctrl(gen.cmd_emergency());
+		default:
+			break;
+		}
+	}
+	ctrl.release_at_cmd_ctrl();
+	tk::net_end();
+	return NULL;
+}
 void* navdata_recv(void* param) {
 
 	return NULL;

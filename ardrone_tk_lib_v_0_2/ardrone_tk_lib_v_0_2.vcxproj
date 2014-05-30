@@ -82,9 +82,11 @@
     <ClInclude Include="comdef.h" />
     <ClInclude Include="CommandId.h" />
     <ClInclude Include="config.h" />
+    <ClInclude Include="ARDroneControllor.h" />
     <ClInclude Include="helper.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="ARDroneControllor.cpp" />
     <ClCompile Include="ATCmdGenerator.cpp" />
     <ClCompile Include="CommandId.cpp" />
     <ClCompile Include="helper.cpp" />

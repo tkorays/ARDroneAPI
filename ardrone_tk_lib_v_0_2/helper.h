@@ -7,6 +7,8 @@ using namespace std;
 
 namespace tk {
 	int f32_int32_adjust(const float);
+	void net_prepare();
+	void net_end();
 }
 
 

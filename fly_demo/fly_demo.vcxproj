@@ -80,6 +80,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="..\ardrone_tk_lib_v_0_2\ARDroneControllor.cpp" />
     <ClCompile Include="..\ardrone_tk_lib_v_0_2\ATCmdGenerator.cpp" />
     <ClCompile Include="..\ardrone_tk_lib_v_0_2\CommandId.cpp" />
     <ClCompile Include="..\ardrone_tk_lib_v_0_2\helper.cpp" />
