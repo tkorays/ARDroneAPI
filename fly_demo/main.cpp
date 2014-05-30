@@ -126,6 +126,7 @@ int main(int argc,char** argv) {
 	cout << "start..." << endl;
 	pthread_t pid;
 	pthread_create(&pid, NULL, ardrone_control, NULL);
+
 	pthread_t pid_nav;
 	pthread_create(&pid_nav, NULL, navdata_recv, NULL);
 
