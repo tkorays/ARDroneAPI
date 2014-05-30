@@ -110,6 +110,19 @@ void* ardrone_control_2(void* param) {
 			break;
 		case 'l':
 			ctrl.send_at_cmd_ctrl(gen.cmd_emergency());
+			break;
+		case 'a':
+			ctrl.send_at_cmd_ctrl(gen.cmd_move(true, -0.5f, 0.0f, 0.0f, 0.0f));
+			break;
+		case 'd':
+			ctrl.send_at_cmd_ctrl(gen.cmd_move(true, 0.5f, 0.0f, 0.0f, 0.0f));
+			break;
+		case 'w':
+			ctrl.send_at_cmd_ctrl(gen.cmd_move(true, 0.0f, 0.5f, 0.0f, 0.0f));
+			break;
+		case 's':
+			ctrl.send_at_cmd_ctrl(gen.cmd_move(true, 0.0f, -0.5f, 0.0f, 0.0f));
+			break;
 		default:
 			break;
 		}
