@@ -11,9 +11,9 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{7DF232D3-D4C4-4F65-8852-E0D8E1D3A549}</ProjectGuid>
+    <ProjectGuid>{161763D6-DC9C-4E34-84D5-4CD40A4BE9A0}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
-    <RootNamespace>test</RootNamespace>
+    <RootNamespace>fly_demo</RootNamespace>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -41,13 +41,11 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LinkIncremental>true</LinkIncremental>
-    <IncludePath>..\ardrone_tk_lib_v_0_2;$(PTHREADS_ROOT)\include;$(IncludePath)</IncludePath>
-    <LibraryPath>$(PTHREADS_ROOT)\lib;$(LibraryPath)</LibraryPath>
+    <IncludePath>E:\Code\ARDrone_tk_lib\ardrone_tk_lib_v_0_2;$(PTHREADS_ROOT)\include;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
-    <IncludePath>..\ardrone_tk_lib_v_0_2;$(PTHREADS_ROOT)\include;$(IncludePath)</IncludePath>
-    <LibraryPath>$(PTHREADS_ROOT)\lib;$(LibraryPath)</LibraryPath>
+    <IncludePath>E:\Code\ARDrone_tk_lib\ardrone_tk_lib_v_0_2;$(PTHREADS_ROOT)\include;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>

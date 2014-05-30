@@ -15,16 +15,30 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="main.cpp">
+    <ClInclude Include="comdef.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="config.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="CommandId.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="ATCmdGenerator.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="helper.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="CommandId.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="..\ardrone_tk_lib_v_0_2\ATCmdGenerator.cpp">
+    <ClCompile Include="ATCmdGenerator.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="..\ardrone_tk_lib_v_0_2\CommandId.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="..\ardrone_tk_lib_v_0_2\helper.cpp">
+    <ClCompile Include="helper.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>
