@@ -27,11 +27,11 @@ void* ardrone_control(void* param) {
 	if (send_udp_socket==INVALID_SOCKET) {
 		check_status(SOCKET_ERROR, "invalid socket...");
 	}
-	//sockaddr_in localaddr;
-	//localaddr.sin_family = AF_INET;
-	//localaddr.sin_port = htons(5556);
-	//localaddr.sin_addr.S_un.S_addr = inet_addr("192.168.1.2");
-	//bind(send_udp_socket, (sockaddr*)&localaddr, 0);
+	sockaddr_in localaddr;
+	localaddr.sin_family = AF_INET;
+	localaddr.sin_port = htons(5556);
+	localaddr.sin_addr.S_un.S_addr = inet_addr("192.168.1.2");
+	bind(send_udp_socket, (sockaddr*)&localaddr, 0);
 
 	sockaddr_in send_to_addr;
 	send_to_addr.sin_family = AF_INET;
@@ -49,31 +49,31 @@ void* ardrone_control(void* param) {
 		switch (key) {
 		case 'j':
 			cmd = gen.cmd_takeoff();
-			status = sendto(send_udp_socket, cmd.c_str(), sizeof(cmd.c_str()), 0, \
+			status = sendto(send_udp_socket, cmd.data(), cmd.size(), 0, \
 				(sockaddr*)&send_to_addr, sizeof(send_to_addr));
-			cout << cmd.c_str() << endl;
+			cout << cmd.data() << endl;
 			break;
 		case 'k':
 			cmd = gen.cmd_land();
-			sendto(send_udp_socket, cmd.c_str(), sizeof(cmd.c_str()), 0, \
+			sendto(send_udp_socket, cmd.data(), cmd.size(), 0, \
 				(sockaddr*)&send_to_addr, sizeof(send_to_addr));
 			cout << cmd.c_str() << endl;
 			break;
 		case 'l':
 			cmd = gen.cmd_emergency();
-			sendto(send_udp_socket, cmd.c_str(), sizeof(cmd.c_str()), 0, \
+			sendto(send_udp_socket, cmd.data(), cmd.size(), 0, \
 				(sockaddr*)&send_to_addr, sizeof(send_to_addr));
 			cout << cmd.c_str() << endl;
 			break;
 		case 'a':
 			cmd = gen.cmd_move(true, -0.5f, 0.0f, 0.0f, 0.0f);
-			sendto(send_udp_socket, cmd.c_str(), sizeof(cmd.c_str()), 0, \
+			sendto(send_udp_socket, cmd.data(), cmd.size(), 0, \
 				(sockaddr*)&send_to_addr, sizeof(send_to_addr));
 			cout << cmd.c_str() << endl;
 			break;
 		case 'd':
 			cmd = gen.cmd_move(true, 0.5f, 0.0f, 0.0f, 0.0f);
-			sendto(send_udp_socket, cmd.c_str(), sizeof(cmd.c_str()), 0, \
+			sendto(send_udp_socket, cmd.data(), cmd.size(), 0, \
 				(sockaddr*)&send_to_addr, sizeof(send_to_addr));
 			cout << cmd.c_str() << endl;
 			break;
