@@ -48,6 +48,7 @@ void NavDataClient::block_recv(char* data,int len) {
 	int nsize = sizeof(sockaddr);
 	int status = recvfrom(nav_sck, data, len, 0, \
 		(sockaddr*)&nav_sck_addr, &nsize);
+	data[nsize] = '\0';
 	if (status==SOCKET_ERROR) {
 		return;
 	}
