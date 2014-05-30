@@ -96,32 +96,36 @@ void* ardrone_control_2(void* param) {
 	ARDroneControllor ctrl;
 	int key;
 	ctrl.init_at_cmd_ctrl();
-	while (true) {
-		key = getchar();
-		if (key=='x') {
-			break;
-		}
+	string cmd;
+	while (key = getchar(),key!='x') {
 		switch (key) {
 		case 'j':
-			ctrl.send_at_cmd_ctrl(gen.cmd_takeoff());
+			ctrl.send_at_cmd_ctrl(cmd = gen.cmd_takeoff());
+			cout << cmd << endl;
 			break;
 		case 'k':
-			ctrl.send_at_cmd_ctrl(gen.cmd_land());
+			ctrl.send_at_cmd_ctrl(cmd = gen.cmd_land());
+			cout << cmd << endl;
 			break;
 		case 'l':
-			ctrl.send_at_cmd_ctrl(gen.cmd_emergency());
+			ctrl.send_at_cmd_ctrl(cmd = gen.cmd_emergency());
+			cout << cmd << endl;
 			break;
 		case 'a':
-			ctrl.send_at_cmd_ctrl(gen.cmd_move(true, -0.5f, 0.0f, 0.0f, 0.0f));
+			ctrl.send_at_cmd_ctrl(cmd = gen.cmd_move(true, -0.5f, 0.0f, 0.0f, 0.0f));
+			cout << cmd << endl;
 			break;
 		case 'd':
-			ctrl.send_at_cmd_ctrl(gen.cmd_move(true, 0.5f, 0.0f, 0.0f, 0.0f));
+			ctrl.send_at_cmd_ctrl(cmd = gen.cmd_move(true, 0.5f, 0.0f, 0.0f, 0.0f));
+			cout << cmd << endl;
 			break;
 		case 'w':
-			ctrl.send_at_cmd_ctrl(gen.cmd_move(true, 0.0f, 0.5f, 0.0f, 0.0f));
+			ctrl.send_at_cmd_ctrl(cmd = gen.cmd_move(true, 0.0f, 0.5f, 0.0f, 0.0f));
+			cout << cmd << endl;
 			break;
 		case 's':
-			ctrl.send_at_cmd_ctrl(gen.cmd_move(true, 0.0f, -0.5f, 0.0f, 0.0f));
+			ctrl.send_at_cmd_ctrl(cmd = gen.cmd_move(true, 0.0f, -0.5f, 0.0f, 0.0f));
+			cout << cmd << endl;
 			break;
 		default:
 			break;
@@ -138,7 +142,7 @@ void* navdata_recv(void* param) {
 int main(int argc,char** argv) {
 	cout << "start..." << endl;
 	pthread_t pid;
-	pthread_create(&pid, NULL, ardrone_control, NULL);
+	pthread_create(&pid, NULL, ardrone_control_2, NULL);
 
 	pthread_t pid_nav;
 	pthread_create(&pid_nav, NULL, navdata_recv, NULL);
