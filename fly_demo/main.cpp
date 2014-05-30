@@ -86,14 +86,18 @@ void* ardrone_control(void* param) {
 	return NULL;
 }
 
+void* navdata_recv(void* param) {
+
+	return NULL;
+}
 int main(int argc,char** argv) {
 	cout << "start..." << endl;
 	pthread_t pid;
 	pthread_create(&pid, NULL, ardrone_control, NULL);
-
-
-
+	pthread_t pid_nav;
+	pthread_create(&pid_nav, NULL, navdata_recv, NULL);
 
 	pthread_join(pid,NULL);
+	pthread_join(pid_nav, NULL);
 	return 0;
 }
