@@ -143,12 +143,18 @@ void* navdata_recv(void* param) {
 
 	NavDataClient nav;
 	nav.exit_bootstrap(ctrl, gen);
-	int len = 30;
-	char* data = new char[30];
+	if (!nav.init_navdata_client()) {
+		cout << "init navdata_client error" << endl;
+		nav.release_navdata_client();
+		ctrl.release_at_cmd_ctrl();
+		return NULL;
+	}
+	int len = 1024;
+	char* data = new char[1024];
 	// ×èÈû½ÓÊÕ
 	while (true) {
 		nav.block_recv(data, len);
-		cout << data;
+		cout << data << endl;
 	}
 
 	nav.release_navdata_client();
