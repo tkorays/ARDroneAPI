@@ -11,6 +11,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ardrone_tk_lib_v_0_2", "ard
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "fly_demo", "fly_demo\fly_demo.vcxproj", "{161763D6-DC9C-4E34-84D5-4CD40A4BE9A0}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "fetchNavData", "fetchNavData\fetchNavData.vcxproj", "{5D8322ED-CACE-4AA4-B8D3-9EDD3C4A1C82}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Win32 = Debug|Win32
@@ -33,6 +35,10 @@ Global
 		{161763D6-DC9C-4E34-84D5-4CD40A4BE9A0}.Debug|Win32.Build.0 = Debug|Win32
 		{161763D6-DC9C-4E34-84D5-4CD40A4BE9A0}.Release|Win32.ActiveCfg = Release|Win32
 		{161763D6-DC9C-4E34-84D5-4CD40A4BE9A0}.Release|Win32.Build.0 = Release|Win32
+		{5D8322ED-CACE-4AA4-B8D3-9EDD3C4A1C82}.Debug|Win32.ActiveCfg = Debug|Win32
+		{5D8322ED-CACE-4AA4-B8D3-9EDD3C4A1C82}.Debug|Win32.Build.0 = Debug|Win32
+		{5D8322ED-CACE-4AA4-B8D3-9EDD3C4A1C82}.Release|Win32.ActiveCfg = Release|Win32
+		{5D8322ED-CACE-4AA4-B8D3-9EDD3C4A1C82}.Release|Win32.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

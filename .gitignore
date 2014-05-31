@@ -156,3 +156,4 @@ $RECYCLE.BIN/
 .DS_Store
 /fly_demo/ardrone_tk.lib
 /fly_demo/ardrone_tk_lib_v_0_2.lib
+/fetchNavData/pthreadVC2.lib
