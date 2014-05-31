@@ -27,7 +27,7 @@ bool NavDataClient::init_navdata_client() {
 	
 	nav_sck_addr.sin_family = AF_INET;
 	nav_sck_addr.sin_addr.S_un.S_addr = inet_addr(ARDRONE_IP);
-	nav_sck_addr.sin_port = htons(NAVDATA_PORT);
+	nav_sck_addr.sin_port = ntohs(NAVDATA_PORT);
 
 	int status = connect(nav_sck, (sockaddr*)&nav_sck_addr, sizeof(nav_sck_addr));
 	if (status == SOCKET_ERROR) {
