@@ -5,8 +5,10 @@ NavDataClient::NavDataClient() :bootstrap_mod(true) {
 	nav_sck_running = false;
 }
 void NavDataClient::exit_bootstrap(ARDroneControllor ctrl, ATCmdGenerator& gen){
-	string cmd = gen.cmd_config("general:navdata_demo", "TRUE");
-	ctrl.send_at_cmd_ctrl(cmd);
+	string cmd = gen.cmd_config("general:navdata_demo", "FALSE");
+	//ctrl.send_at_cmd_ctrl(cmd);
+	ctrl.send_at_cmd_ctrl("AT*CONFIG=\"general:navdata_dem\",\"TRUE\"\r");
+	ctrl.send_at_cmd_ctrl("AT*CTRL=0");
 	bootstrap_mod = false;
 }
 
@@ -27,10 +29,10 @@ bool NavDataClient::init_navdata_client() {
 	nav_sck_addr.sin_addr.S_un.S_addr = inet_addr(ARDRONE_IP);
 	nav_sck_addr.sin_port = htons(NAVDATA_PORT);
 
-	//int status = connect(nav_sck, (sockaddr*)&nav_sck_addr, sizeof(nav_sck_addr));
-	//if (status == SOCKET_ERROR) {
-	//	return false;
-	//}
+	int status = connect(nav_sck, (sockaddr*)&nav_sck_addr, sizeof(nav_sck_addr));
+	if (status == SOCKET_ERROR) {
+		return false;
+	}
 	
 	//int status = sendto(nav_sck, "AT*CTRL=0\r", sizeof("AT*CTRL=0\r"), 0, \
 		(sockaddr*)&nav_sck_addr, sizeof(nav_sck_addr));
