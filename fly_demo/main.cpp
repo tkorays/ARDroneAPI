@@ -85,6 +85,7 @@ void* navdata_recv(void* param) {
 			cout << data << endl;
 		} else {
 			check_status(status, "not receive any data");
+			continue;
 		}
 	}
 
