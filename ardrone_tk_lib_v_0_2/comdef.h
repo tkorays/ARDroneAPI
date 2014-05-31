@@ -23,5 +23,11 @@
 #define PRINTF_PORT          5558
 #define CONTROL_PORT         5559
 
+typedef int TK_STATUS;
+#define TK_OK                1
+#define TK_FAILED            -1
+#define TK_SOCK_ERROR        50
+#define TK_
+
 
 #endif // _TK_COMDEF_H_

@@ -43,15 +43,24 @@ bool NavDataClient::release_navdata_client() {
 	nav_sck_running = false;
 	return true;
 }
-void NavDataClient::block_recv(char* data,int len) {
+TK_STATUS NavDataClient::recv_pack(char* data, int len) {
 	if (!nav_sck_running) {
-		return;
+		return TK_FAILED;
 	}
-	int nsize;
+	int nsize = sizeof(sockaddr);
 	int status = recvfrom(nav_sck, data, len, 0, \
 		(sockaddr*)&nav_sck_addr, &nsize);
-	data[nsize] = '\0';
+	
 	if (status==SOCKET_ERROR) {
-		return;
+		if (WSAEWOULDBLOCK==WSAGetLastError()) {
+			return TK_SOCK_ERROR;
+		}
+		if (WSAECONNRESET==WSAGetLastError()) {
+			return TK_SOCK_ERROR;
+		}
+		cout << WSAGetLastError() << endl;
+		return TK_SOCK_ERROR;
 	}
+	data[nsize] = '\0';
+	return TK_OK;
 }

@@ -17,7 +17,7 @@ namespace tk {
 		void exit_bootstrap(ARDroneControllor ctrl,ATCmdGenerator& gen);
 		bool init_navdata_client();
 		bool release_navdata_client();
-		void block_recv(char* data,int len);
+		TK_STATUS recv_pack(char* data,int len);
 	};
 }
 #endif // _TK_NAVDATA_CLIENT_H_
