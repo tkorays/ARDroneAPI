@@ -18,7 +18,7 @@ bool ARDroneControllor::init_at_cmd_ctrl() {
 	localaddr.sin_addr.S_un.S_addr = inet_addr("192.168.1.2");
 	bind(at_cmd_sck, (sockaddr*)&localaddr, 0);
 	*/
-	
+
 	ardrone_at_addr.sin_family = AF_INET;
 	ardrone_at_addr.sin_addr.S_un.S_addr = inet_addr("192.168.1.1");
 	ardrone_at_addr.sin_port = ntohs(AT_PORT);

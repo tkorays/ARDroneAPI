@@ -6,9 +6,7 @@ NavDataClient::NavDataClient() :bootstrap_mod(true) {
 }
 void NavDataClient::exit_bootstrap(ARDroneControllor ctrl, ATCmdGenerator& gen){
 	string cmd = gen.cmd_config("general:navdata_demo", "TRUE");
-	cout << cmd << endl;
 	ctrl.send_at_cmd_ctrl(cmd);
-	//ctrl.send_at_cmd_ctrl("AT*CONFIG=\"general:navdata_demo\",\"TRUE\"\r");
 	bootstrap_mod = false;
 }
 
@@ -17,27 +15,28 @@ bool NavDataClient::init_navdata_client() {
 	if (nav_sck==INVALID_SOCKET) {
 		return false;
 	}
-	
+	/*
 	sockaddr_in localaddr;
 	localaddr.sin_family = AF_INET;
 	localaddr.sin_port = htons(NAVDATA_PORT);
 	localaddr.sin_addr.S_un.S_addr = inet_addr(LOCAL_IP);
 	bind(nav_sck, (sockaddr*)&localaddr, sizeof(localaddr));
-	
+	*/
 	
 	nav_sck_addr.sin_family = AF_INET;
 	nav_sck_addr.sin_addr.S_un.S_addr = inet_addr(ARDRONE_IP);
-	nav_sck_addr.sin_port = ntohs(NAVDATA_PORT);
+	nav_sck_addr.sin_port = htons(NAVDATA_PORT);
 
-	int status = connect(nav_sck, (sockaddr*)&nav_sck_addr, sizeof(nav_sck_addr));
-	if (status == SOCKET_ERROR) {
-		return false;
-	}
-	status = sendto(nav_sck, "AT*CTRL=0\r", sizeof("AT*CTRL=0\r"), 0, \
+	//int status = connect(nav_sck, (sockaddr*)&nav_sck_addr, sizeof(nav_sck_addr));
+	//if (status == SOCKET_ERROR) {
+	//	return false;
+	//}
+	
+	//int status = sendto(nav_sck, "AT*CTRL=0\r", sizeof("AT*CTRL=0\r"), 0, \
 		(sockaddr*)&nav_sck_addr, sizeof(nav_sck_addr));
-	if (status==SOCKET_ERROR) {
-		return false;
-	}
+	//if (status==SOCKET_ERROR) {
+	//	return false;
+	//}
 	return nav_sck_running = true;
 }
 

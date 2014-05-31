@@ -79,7 +79,7 @@ void* navdata_recv(void* param) {
 	
 	
 	//ctrl.send_at_cmd_ctrl(gen.cmd_land());
-	ctrl.send_at_cmd_ctrl("AT*CTRL=0");
+	ctrl.send_at_cmd_ctrl("AT*CTRL=0\r");
 	//ctrl.send_at_cmd_ctrl(gen.cmd_config("CONTROL:altitude_max","3000"));
 	int len = 2048;
 	char* data = new char[2048];
