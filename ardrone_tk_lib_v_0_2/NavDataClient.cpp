@@ -4,8 +4,11 @@ using namespace tk;
 NavDataClient::NavDataClient() :bootstrap_mod(true) {
 	nav_sck_running = false;
 }
-void NavDataClient::exit_bootstrap(ARDroneControllor ctrl, ATCmdGenerator& gen) {
-	ctrl.send_at_cmd_ctrl(gen.cmd_config("general:navdata_demo","TRUE"));
+void NavDataClient::exit_bootstrap(ARDroneControllor ctrl, ATCmdGenerator& gen){
+	string cmd = gen.cmd_config("general:navdata_demo", "TRUE");
+	cout << cmd << endl;
+	ctrl.send_at_cmd_ctrl(cmd);
+	//ctrl.send_at_cmd_ctrl("AT*CONFIG=\"general:navdata_demo\",\"TRUE\"\r");
 	bootstrap_mod = false;
 }
 
@@ -19,7 +22,7 @@ bool NavDataClient::init_navdata_client() {
 	localaddr.sin_family = AF_INET;
 	localaddr.sin_port = htons(NAVDATA_PORT);
 	localaddr.sin_addr.S_un.S_addr = inet_addr(LOCAL_IP);
-	bind(nav_sck, (sockaddr*)&localaddr, 0);
+	bind(nav_sck, (sockaddr*)&localaddr, sizeof(localaddr));
 	
 	
 	nav_sck_addr.sin_family = AF_INET;
@@ -47,10 +50,9 @@ TK_STATUS NavDataClient::recv_pack(char* data, int len) {
 	if (!nav_sck_running) {
 		return TK_FAILED;
 	}
-	int nsize = sizeof(sockaddr);
+	int nsize = sizeof(sockaddr_in);
 	int status = recvfrom(nav_sck, data, len, 0, \
 		(sockaddr*)&nav_sck_addr, &nsize);
-	
 	if (status==SOCKET_ERROR) {
 		if (WSAEWOULDBLOCK==WSAGetLastError()) {
 			return TK_SOCK_ERROR;

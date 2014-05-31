@@ -71,7 +71,7 @@ string ATCmdGenerator::cmd_calib(int device) {
 // AT*CONFIG 
 string ATCmdGenerator::cmd_config(string name, string value) {
 	char cmd[128];
-	sprintf_s(cmd, "AT*CONFIG=%d,%s,%s%c", \
+	sprintf_s(cmd, "AT*CONFIG=%d,\"%s\",\"%s\"", \
 		cmd_id->get_id(true), \
 		name.c_str(), \
 		value.c_str(), \
@@ -81,7 +81,7 @@ string ATCmdGenerator::cmd_config(string name, string value) {
 // AT*CONFIG_IDS
 string ATCmdGenerator::cmd_config_ids(string sid, string uid, string caid) {
 	char cmd[128];
-	sprintf_s(cmd, "AT*CONFIG_IDS=%d,%s,%s,%s%c", \
+	sprintf_s(cmd, "AT*CONFIG_IDS=%d,\"%s\",\"%s\",\"%s\"%c", \
 		cmd_id->get_id(true), \
 		sid.c_str(), \
 		uid.c_str(), \
@@ -92,7 +92,9 @@ string ATCmdGenerator::cmd_config_ids(string sid, string uid, string caid) {
 // TODO: watch dog
 // AT*COMWDG,communicate with watch dog
 string ATCmdGenerator::cmd_watchdog() {
-	return "";
+	char cmd[128];
+	sprintf_s(cmd, "AT*COMWDG=%d%c", cmd_id->get_id(true), CR_DEF);
+	return cmd;
 }
 // TODO: AT*CTRL
 // AT*CTRL

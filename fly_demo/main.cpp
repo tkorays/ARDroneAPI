@@ -64,9 +64,10 @@ void* navdata_recv(void* param) {
 
 	tk::net_prepare();
 	ARDroneControllor ctrl;
-	ctrl.init_at_cmd_ctrl();
-	ctrl.send_at_cmd_ctrl(gen.cmd_land());
-
+	int ret = ctrl.init_at_cmd_ctrl();
+	if (!ret) {
+		cout << "init ctrl error!" << endl;
+	}
 	NavDataClient nav;
 	nav.exit_bootstrap(ctrl, gen);
 	if (!nav.init_navdata_client()) {
@@ -75,12 +76,18 @@ void* navdata_recv(void* param) {
 		ctrl.release_at_cmd_ctrl();
 		return NULL;
 	}
-	int len = 1024;
-	char* data = new char[1024];
+	
+	
+	//ctrl.send_at_cmd_ctrl(gen.cmd_land());
+	ctrl.send_at_cmd_ctrl("AT*CTRL=0");
+	//ctrl.send_at_cmd_ctrl(gen.cmd_config("CONTROL:altitude_max","3000"));
+	int len = 2048;
+	char* data = new char[2048];
 	// Òì²½½ÓÊÕ
 	TK_STATUS status;
 	while (true) {
 		status = nav.recv_pack(data, len);
+		ctrl.send_at_cmd_ctrl(gen.cmd_watchdog());
 		if (status==TK_OK) {
 			cout << data << endl;
 		} else {
@@ -91,6 +98,7 @@ void* navdata_recv(void* param) {
 
 	nav.release_navdata_client();
 	ctrl.release_at_cmd_ctrl();
+	tk::net_end();
 	return NULL;
 }
 int main(int argc,char** argv) {
@@ -100,7 +108,6 @@ int main(int argc,char** argv) {
 
 	pthread_t pid_nav;
 	pthread_create(&pid_nav, NULL, navdata_recv, NULL);
-
 	//pthread_join(pid,NULL);
 	pthread_join(pid_nav, NULL);
 	return 0;
