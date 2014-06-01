@@ -1,6 +1,7 @@
 //#pragma comment(lib,"ardrone_tk.lib")
 #pragma comment(lib,"pthreadVC2.lib")
 #pragma comment(lib,"ws2_32.lib")
+#pragma comment(lib,"iphlpapi.lib")
 
 #include <iostream>
 #include <string>
@@ -105,7 +106,7 @@ int main(int argc,char** argv) {
 	cout << "start..." << endl;
 	//pthread_t pid;
 	//pthread_create(&pid, NULL, ardrone_control, NULL);
-
+	cout << get_local_ip() << endl;
 	pthread_t pid_nav;
 	pthread_create(&pid_nav, NULL, navdata_recv, NULL);
 	//pthread_join(pid,NULL);

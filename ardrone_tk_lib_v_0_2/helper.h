@@ -11,6 +11,7 @@ namespace tk {
 	void net_prepare();
 	void net_end();
 	void check_status(TK_STATUS status,const string msg);
+	string get_local_ip();
 }
 
 

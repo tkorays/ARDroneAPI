@@ -13,6 +13,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "fly_demo", "fly_demo\fly_de
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "fetchNavData", "fetchNavData\fetchNavData.vcxproj", "{5D8322ED-CACE-4AA4-B8D3-9EDD3C4A1C82}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "jx_lab", "jx_lab\jx_lab.vcxproj", "{54201FED-2FF7-406D-8EB8-44E90E64512B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Win32 = Debug|Win32
@@ -39,6 +41,10 @@ Global
 		{5D8322ED-CACE-4AA4-B8D3-9EDD3C4A1C82}.Debug|Win32.Build.0 = Debug|Win32
 		{5D8322ED-CACE-4AA4-B8D3-9EDD3C4A1C82}.Release|Win32.ActiveCfg = Release|Win32
 		{5D8322ED-CACE-4AA4-B8D3-9EDD3C4A1C82}.Release|Win32.Build.0 = Release|Win32
+		{54201FED-2FF7-406D-8EB8-44E90E64512B}.Debug|Win32.ActiveCfg = Debug|Win32
+		{54201FED-2FF7-406D-8EB8-44E90E64512B}.Debug|Win32.Build.0 = Debug|Win32
+		{54201FED-2FF7-406D-8EB8-44E90E64512B}.Release|Win32.ActiveCfg = Release|Win32
+		{54201FED-2FF7-406D-8EB8-44E90E64512B}.Release|Win32.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
