@@ -56,15 +56,16 @@ void* nav_data(void* param) {
 
 int main(int argc, char** argv) {
 	tk::net_prepare();
-
+	
 	CommandId cmd_id;
 	ATCmdGenerator gen(&cmd_id);
 
 	cout << "start fetch navdata..." << endl;
-
 	pthread_t pid;
 	pthread_create(&pid, NULL, nav_data, (void*)&gen);
 	pthread_join(pid, NULL);
+
+	
 
 	tk::net_end();
 	return 0;

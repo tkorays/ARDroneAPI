@@ -26,7 +26,7 @@ bool NavDataClient::init_navdata_client() {
 	}
 	
 	// send a package to NAVDATA_PORT
-	status = sendto(nav_sck, "\1", sizeof("\1"), 0, \
+	status = sendto(nav_sck, "\1", 1, 0, \
 		(sockaddr*)&nav_sck_addr, sizeof(nav_sck_addr));
 	if (status==SOCKET_ERROR) {
 		return false;
