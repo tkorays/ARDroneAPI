@@ -6,10 +6,14 @@
 
 #define ARDRONE_IP "192.168.1.1"
 
+#define NAV_INIT_PKG "\01"
 
-#define TAKEOFF_CODE 0x11540200
-#define LAND_CODE    0x11540000
-#define EMERG_CODE   0x11540100
+#define MAX_BUFF_SIZE 2048
+
+
+#define TAKEOFF_CODE         0x11540200
+#define LAND_CODE            0x11540000
+#define EMERG_CODE           0x11540100
 
 
 #define FTP_PORT	         5551
@@ -22,13 +26,14 @@
 #define PRINTF_PORT          5558
 #define CONTROL_PORT         5559
 
-typedef int TK_STATUS;
+typedef int STATUS;
 #define TK_OK                1
-#define TK_FAILED           -1
-#define TK_ERROR            -2
+#define TK_WARNING           -1
+#define TK_ERROR             -2
 
-#define TK_SOCK_ERROR         50
-#define TK_
+#define TK_SOCK_ERROR        50
+#define TK_INVALID_SCK       51
+
 
 
 #endif // _TK_COMDEF_H_
