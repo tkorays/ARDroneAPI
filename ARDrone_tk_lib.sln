@@ -3,17 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
 VisualStudioVersion = 12.0.21005.1
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ardrone_tk_lib", "ardrone_tk_lib\ardrone_tk_lib.vcxproj", "{36E7ABA6-2F74-4641-BE27-6F150F337F48}"
-EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "test", "test\test.vcxproj", "{7DF232D3-D4C4-4F65-8852-E0D8E1D3A549}"
-EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ardrone_tk_lib_v_0_2", "ardrone_tk_lib_v_0_2\ardrone_tk_lib_v_0_2.vcxproj", "{5751C446-389F-4DB5-B659-8C0F8B4ACEDC}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "fly_demo", "fly_demo\fly_demo.vcxproj", "{161763D6-DC9C-4E34-84D5-4CD40A4BE9A0}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "fetchNavData", "fetchNavData\fetchNavData.vcxproj", "{5D8322ED-CACE-4AA4-B8D3-9EDD3C4A1C82}"
-EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "jx_lab", "jx_lab\jx_lab.vcxproj", "{54201FED-2FF7-406D-8EB8-44E90E64512B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,14 +15,6 @@ Global
 		Release|Win32 = Release|Win32
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{36E7ABA6-2F74-4641-BE27-6F150F337F48}.Debug|Win32.ActiveCfg = Debug|Win32
-		{36E7ABA6-2F74-4641-BE27-6F150F337F48}.Debug|Win32.Build.0 = Debug|Win32
-		{36E7ABA6-2F74-4641-BE27-6F150F337F48}.Release|Win32.ActiveCfg = Release|Win32
-		{36E7ABA6-2F74-4641-BE27-6F150F337F48}.Release|Win32.Build.0 = Release|Win32
-		{7DF232D3-D4C4-4F65-8852-E0D8E1D3A549}.Debug|Win32.ActiveCfg = Debug|Win32
-		{7DF232D3-D4C4-4F65-8852-E0D8E1D3A549}.Debug|Win32.Build.0 = Debug|Win32
-		{7DF232D3-D4C4-4F65-8852-E0D8E1D3A549}.Release|Win32.ActiveCfg = Release|Win32
-		{7DF232D3-D4C4-4F65-8852-E0D8E1D3A549}.Release|Win32.Build.0 = Release|Win32
 		{5751C446-389F-4DB5-B659-8C0F8B4ACEDC}.Debug|Win32.ActiveCfg = Debug|Win32
 		{5751C446-389F-4DB5-B659-8C0F8B4ACEDC}.Debug|Win32.Build.0 = Debug|Win32
 		{5751C446-389F-4DB5-B659-8C0F8B4ACEDC}.Release|Win32.ActiveCfg = Release|Win32
@@ -41,10 +27,6 @@ Global
 		{5D8322ED-CACE-4AA4-B8D3-9EDD3C4A1C82}.Debug|Win32.Build.0 = Debug|Win32
 		{5D8322ED-CACE-4AA4-B8D3-9EDD3C4A1C82}.Release|Win32.ActiveCfg = Release|Win32
 		{5D8322ED-CACE-4AA4-B8D3-9EDD3C4A1C82}.Release|Win32.Build.0 = Release|Win32
-		{54201FED-2FF7-406D-8EB8-44E90E64512B}.Debug|Win32.ActiveCfg = Debug|Win32
-		{54201FED-2FF7-406D-8EB8-44E90E64512B}.Debug|Win32.Build.0 = Debug|Win32
-		{54201FED-2FF7-406D-8EB8-44E90E64512B}.Release|Win32.ActiveCfg = Release|Win32
-		{54201FED-2FF7-406D-8EB8-44E90E64512B}.Release|Win32.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
