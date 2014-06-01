@@ -71,7 +71,7 @@ string ATCmdGenerator::cmd_calib(int device) {
 // AT*CONFIG 
 string ATCmdGenerator::cmd_config(string name, string value) {
 	char cmd[128];
-	sprintf_s(cmd, "AT*CONFIG=%d,\"%s\",\"%s\"", \
+	sprintf_s(cmd, "AT*CONFIG=%d,\"%s\",\"%s\"%c", \
 		cmd_id->get_id(true), \
 		name.c_str(), \
 		value.c_str(), \
@@ -98,9 +98,13 @@ string ATCmdGenerator::cmd_watchdog() {
 }
 // TODO: AT*CTRL
 // AT*CTRL
-string ATCmdGenerator::cmd_control() {
+string ATCmdGenerator::cmd_control(int a,int b) {
 	char cmd[128];
-	sprintf_s(cmd, "AT*CTRL=0%c", CR_DEF);
+	sprintf_s(cmd, "AT*CTRL=%d,%d,%d%c",\
+		cmd_id->get_id(true),\
+		a,\
+		b,\
+		CR_DEF);
 	return string(cmd);
 }
 // pack command

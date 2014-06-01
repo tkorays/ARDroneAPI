@@ -17,13 +17,15 @@ bool NavDataClient::init_navdata_client() {
 	if (nav_sck==INVALID_SOCKET) {
 		return false;
 	}
-	/*
-	sockaddr_in localaddr;
+	
+	
+	//sockaddr_in localaddr;
 	localaddr.sin_family = AF_INET;
 	localaddr.sin_port = htons(NAVDATA_PORT);
-	localaddr.sin_addr.S_un.S_addr = inet_addr(LOCAL_IP);
-	bind(nav_sck, (sockaddr*)&localaddr, sizeof(localaddr));
-	*/
+	localaddr.sin_addr.S_un.S_addr = inet_addr("192.168.1.2");
+	int ret = bind(nav_sck, (sockaddr*)&localaddr, sizeof(localaddr));
+	cout << ret << endl;
+	
 	
 	nav_sck_addr.sin_family = AF_INET;
 	nav_sck_addr.sin_addr.S_un.S_addr = inet_addr(ARDRONE_IP);
@@ -34,11 +36,12 @@ bool NavDataClient::init_navdata_client() {
 		return false;
 	}
 	
-	//int status = sendto(nav_sck, "AT*CTRL=0\r", sizeof("AT*CTRL=0\r"), 0, \
+	// send a package to NAVDATA_PORT
+	status = sendto(nav_sck, "\1", sizeof("\1"), 0, \
 		(sockaddr*)&nav_sck_addr, sizeof(nav_sck_addr));
-	//if (status==SOCKET_ERROR) {
-	//	return false;
-	//}
+	if (status==SOCKET_ERROR) {
+		return false;
+	}
 	return nav_sck_running = true;
 }
 

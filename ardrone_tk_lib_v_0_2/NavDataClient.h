@@ -11,6 +11,7 @@ namespace tk {
 		bool bootstrap_mod;
 		SOCKET nav_sck;
 		sockaddr_in nav_sck_addr;
+		sockaddr_in localaddr;
 		bool nav_sck_running;
 	public:
 		NavDataClient();

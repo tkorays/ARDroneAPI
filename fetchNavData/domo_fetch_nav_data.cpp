@@ -21,11 +21,12 @@ void* nav_data(void* param) {
 
 	ARDroneControllor ctrl;
 	// exit bootstrap mode
-	ctrl.send_at_cmd_ctrl(gen->cmd_config("general:navdata_demo", "TRUE"));
+	//ctrl.send_at_cmd_ctrl(gen->cmd_config("general:navdata_demo", "TRUE"));
 	//ctrl.send_at_cmd_ctrl("AT*CONFIG=\"general:navdata_demo\",\"TRUE\"\r");
 	//ctrl.send_at_cmd_ctrl("AT*CTRL=0");
-	ctrl.send_at_cmd_ctrl(gen->cmd_control());
+	//ctrl.send_at_cmd_ctrl(gen->cmd_control());
 
+	/*
 	SOCKET sck = socket(AF_INET, SOCK_DGRAM, IPPROTO_UDP);
 	sockaddr_in sck_addr;
 	sck_addr.sin_addr.S_un.S_addr = inet_addr(ARDRONE_IP);
@@ -34,8 +35,19 @@ void* nav_data(void* param) {
 	connect(sck, (sockaddr*)&sck_addr, sizeof(sck_addr));
 	sendto(sck, gen->cmd_control().data(), gen->cmd_control().size(), 0, \
 		(sockaddr*)&sck_addr, sizeof(sck_addr));
-
-	
+	*/
+	ctrl.init_at_cmd_ctrl();
+	gen->clear_pack();
+	gen->pack(gen->cmd_control(5, 0));
+	;
+	//gen->pack("AT*REF=1,0\r");
+	gen->pack(gen->cmd_land());
+	gen->pack(gen->cmd_move(false, 0, 0, 0, 0));
+	ctrl.send_at_cmd_ctrl(gen->get_cmd_pack());
+	//ctrl.send_at_cmd_ctrl(gen->cmd_land());
+	ctrl.send_at_cmd_ctrl(gen->cmd_config("general:navdata_demo", "TRUE"));
+	//ctrl.send_at_cmd_ctrl(gen->cmd_control());
+	//ctrl.send_at_cmd_ctrl("AT*CTRL=0\r");
 
 	char data[1024];
 	while (true) {
@@ -45,8 +57,9 @@ void* nav_data(void* param) {
 		} else {
 			check_status(ret, "no data received...");
 		}
-		ctrl.send_at_cmd_ctrl(gen->cmd_watchdog());
+		//ctrl.send_at_cmd_ctrl(gen->cmd_watchdog());
 	}
+	ctrl.release_at_cmd_ctrl();
 	return NULL;
 }
 

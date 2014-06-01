@@ -2,7 +2,7 @@
 using namespace tk;
 
 CommandId::CommandId() {
-	id = 0;
+	id = -1;
 }
 
 void CommandId::inc() {
