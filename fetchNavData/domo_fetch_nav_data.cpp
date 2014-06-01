@@ -1,5 +1,7 @@
 #pragma comment(lib,"pthreadVC2.lib")
 #pragma comment(lib,"ws2_32.lib")
+// helper 里面需要
+#pragma comment(lib,"iphlpapi.lib")
 
 #include <iostream>
 #include <string>
@@ -20,35 +22,24 @@ void* nav_data(void* param) {
 	nav.init_navdata_client();
 
 	ARDroneControllor ctrl;
-	// exit bootstrap mode
-	//ctrl.send_at_cmd_ctrl(gen->cmd_config("general:navdata_demo", "TRUE"));
-	//ctrl.send_at_cmd_ctrl("AT*CONFIG=\"general:navdata_demo\",\"TRUE\"\r");
-	//ctrl.send_at_cmd_ctrl("AT*CTRL=0");
-	//ctrl.send_at_cmd_ctrl(gen->cmd_control());
-
-	/*
-	SOCKET sck = socket(AF_INET, SOCK_DGRAM, IPPROTO_UDP);
-	sockaddr_in sck_addr;
-	sck_addr.sin_addr.S_un.S_addr = inet_addr(ARDRONE_IP);
-	sck_addr.sin_family = AF_INET;
-	sck_addr.sin_port = ntohs(CONTROL_PORT);
-	connect(sck, (sockaddr*)&sck_addr, sizeof(sck_addr));
-	sendto(sck, gen->cmd_control().data(), gen->cmd_control().size(), 0, \
-		(sockaddr*)&sck_addr, sizeof(sck_addr));
-	*/
+	
 	ctrl.init_at_cmd_ctrl();
+	// 返回一些信息，这里不处理了。
+	// 工作中应该recv信息，如果是bootstrap模式才会退出bootstrap模式，否则不用。
+	// 下面我们不管是不bootstrap模式都发送退出bootstrap模式。
+
+	// 发送控制命令，这里让它呆在原地
 	gen->clear_pack();
 	gen->pack(gen->cmd_control(5, 0));
-	;
-	//gen->pack("AT*REF=1,0\r");
 	gen->pack(gen->cmd_land());
 	gen->pack(gen->cmd_move(false, 0, 0, 0, 0));
 	ctrl.send_at_cmd_ctrl(gen->get_cmd_pack());
-	//ctrl.send_at_cmd_ctrl(gen->cmd_land());
+	
+	// 退出bootstrap模式，也可以调用：
+	//nav.exit_bootstrap(ctrl, *gen);
 	ctrl.send_at_cmd_ctrl(gen->cmd_config("general:navdata_demo", "TRUE"));
-	//ctrl.send_at_cmd_ctrl(gen->cmd_control());
-	//ctrl.send_at_cmd_ctrl("AT*CTRL=0\r");
-
+	
+	// 不断接受数据，当然，这里会接收NAVDATA_PORT初始发的一些状态信息
 	char data[1024];
 	while (true) {
 		int ret = nav.recv_pack(data, 1024);
