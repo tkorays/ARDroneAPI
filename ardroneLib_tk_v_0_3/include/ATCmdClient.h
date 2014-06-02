@@ -42,6 +42,7 @@ namespace tk {
 
 		long get_cmd_smallest_id();
 		string get_cmd_by_id(long id);
+		STATUS del_cmd_by_id(long id);
 	public:
 		HANDLE hMutex; // mutex for lock cmd_list
 		ATCmdClient();

@@ -1,5 +1,6 @@
 #include "include/NavDataClient.h"
 #include "include/basic_struct.h"
+#include "include/helper.h"
 using namespace tk;
 
 #include <Windows.h>
@@ -35,6 +36,7 @@ STATUS NavDataClient::send_data(const char* dt,int len) {
 }
 
 ////////////////////////////////////////////////////////////////////////////
+NavDataClient::NavDataClient() {}
 
 NavDataClient::NavDataClient(ATCmdGenerator* gen, ATCmdClient* client) :bootstrap_mod(true) {
 	nav_sck_running = false;
@@ -56,14 +58,15 @@ STATUS NavDataClient::init_navdata_client() {
 	}
 	
 	char data[MAX_BUFF_SIZE];
-	const bool* isBootstrap = (bool*)recv_pack(data, MAX_BUFF_SIZE, bootstrap_check);
-	// TODO dispatch AT command
-	if (*isBootstrap) {
+	//const bool* isBootstrap = (bool*)recv_pack(data, MAX_BUFF_SIZE, bootstrap_check);
+	// TODO callback function & recv fucntion 
+	bool isBootstrap;
+	isBootstrap = true;
+	if (isBootstrap) {
 		// exit bootstrap mode
 		at_cmd cmd;
 		cmd.cmd = cmd_gen->cmd_config("general:navdata_demo","TRUE");
 		cmd.id = cmd_gen->get_current_id();
-
 		dispatch_at_cmd(cmd);
 	}
 
@@ -106,8 +109,3 @@ STATUS NavDataClient::dispatch_at_cmd(at_cmd cmd) {
 }
 
 
-void* bootstrap_check(void* param) {
-
-	bool is_bootstrap = true;
-	return (void*)&is_bootstrap;
-}

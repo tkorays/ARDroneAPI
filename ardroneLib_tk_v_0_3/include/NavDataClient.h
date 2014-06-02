@@ -38,6 +38,7 @@ namespace tk {
 
 		STATUS init_socket();
 		STATUS send_data(const char* dt,int len);
+		NavDataClient();
 	public:
 		NavDataClient(ATCmdGenerator* gen,ATCmdClient* client); // set nav_sck_running
 		/**
@@ -57,10 +58,6 @@ namespace tk {
 		 */
 		STATUS dispatch_at_cmd(at_cmd cmd);
 	};
-	/**
-	 * @brief Exit bootstrap mode if the status sent by ardrone indicates that the drone is in bootstrap mode.
-	 * @return return bool* actually
-	 */
-	void* bootstrap_check(void* param);
+	
 }
 #endif // _TK_NAVDATA_CLIENT_H_

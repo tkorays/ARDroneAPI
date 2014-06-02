@@ -77,4 +77,10 @@ namespace tk {
 			break;
 		}
 	}
+
+	void* bootstrap_check(void* param) {
+
+		bool is_bootstrap = true;
+		return (void*)&is_bootstrap;
+	}
 }

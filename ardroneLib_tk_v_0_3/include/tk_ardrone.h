@@ -15,7 +15,10 @@
 #pragma once
 
 #include "config.h"
+#include "helper.h"
 #include "ATCmdGenerator.h"
+#include "NavDataClient.h"
+#include "ATCmdClient.h"
 
 
 

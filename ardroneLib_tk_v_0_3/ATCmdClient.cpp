@@ -49,6 +49,17 @@ string ATCmdClient::get_cmd_by_id(long id) {
 	}
 	return "";
 }
+STATUS ATCmdClient::del_cmd_by_id(long id) {
+	vector<at_cmd>::const_iterator it = cmd_list.begin();
+	while (it!=cmd_list.end()) {
+		if (id==(*it).id) {
+			it = cmd_list.erase(it);
+			return TK_OK;
+		}
+		it++;
+	}
+	return TK_OK;
+}
 ///////////////////////////////////////////////////////////////
 
 ATCmdClient::ATCmdClient() {
@@ -82,6 +93,7 @@ STATUS ATCmdClient::release_at_cmd_client() {
 STATUS ATCmdClient::collect_and_send() {
 	wait_and_send = true;
 	while (wait_and_send) {
+		
 		// wait until other threads release mutex(don't use cmd_list)
 		DWORD ret = WaitForSingleObject(hMutex, INFINITE);
 		if (ret!=WAIT_OBJECT_0) {
@@ -89,7 +101,7 @@ STATUS ATCmdClient::collect_and_send() {
 		} // else send cmd
 		
 		// initial or no commands
-		if (pre_cmd_id==-1 || cmd_list.size()==0) {
+		if (cmd_list.size()==0) {
 			continue;
 		}
 		if (pre_cmd_id+1 != get_cmd_smallest_id()) {
@@ -102,12 +114,17 @@ STATUS ATCmdClient::collect_and_send() {
 			return TK_ATCMD_ERROR;
 		} // else
 		STATUS  status = send_at_cmd(cmd);
+		// TODO: delete the cmd
+		del_cmd_by_id(pre_cmd_id + 1);
 		if (status!=TK_OK) {
 			return TK_SOCK_ERROR;
 		}
 		
 		pre_cmd_id++;
-		ReleaseMutex(hMutex);
+		if (!ReleaseMutex(hMutex)) {
+			return TK_MUTEX_ERROR;
+		}
+		Sleep(rand() / 50);
 	}
 	return TK_OK;
 }
@@ -121,4 +138,5 @@ STATUS ATCmdClient::add_cmd_to_list(at_cmd cmd) {
 */
 STATUS ATCmdClient::stop_collect() {
 	wait_and_send = false;
+	return TK_OK;
 }

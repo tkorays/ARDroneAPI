@@ -60,6 +60,11 @@ namespace tk {
 	 */
 	void check_status(STATUS status,const string msg);
 
+	/**
+	* @brief Exit bootstrap mode if the status sent by ardrone indicates that the drone is in bootstrap mode.
+	* @return return bool* actually
+	*/
+	void* bootstrap_check(void* param);
 	
 }
 
