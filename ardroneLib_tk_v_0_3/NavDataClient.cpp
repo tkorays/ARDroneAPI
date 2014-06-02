@@ -2,6 +2,8 @@
 #include "include/basic_struct.h"
 using namespace tk;
 
+#include <Windows.h>
+
 /////////////////////////////////////////////////////////////////////////
 
 STATUS NavDataClient::init_socket() {
@@ -34,8 +36,11 @@ STATUS NavDataClient::send_data(const char* dt,int len) {
 
 ////////////////////////////////////////////////////////////////////////////
 
-NavDataClient::NavDataClient() :bootstrap_mod(true) {
+NavDataClient::NavDataClient(ATCmdGenerator* gen, ATCmdClient* client) :bootstrap_mod(true) {
 	nav_sck_running = false;
+	wait_and_recv = false;
+	cmd_gen = gen;
+	at_cmd_client = client;
 }
 
 STATUS NavDataClient::init_navdata_client() {
@@ -55,7 +60,11 @@ STATUS NavDataClient::init_navdata_client() {
 	// TODO dispatch AT command
 	if (*isBootstrap) {
 		// exit bootstrap mode
-		dispatch_at_cmd();
+		at_cmd cmd;
+		cmd.cmd = cmd_gen->cmd_config("general:navdata_demo","TRUE");
+		cmd.id = cmd_gen->get_current_id();
+
+		dispatch_at_cmd(cmd);
 	}
 
 	return TK_OK;
@@ -86,8 +95,14 @@ STATUS NavDataClient::recv_pack(char* data, int len, void* (*callback)(void*para
 	return TK_OK;
 }
 
-STATUS NavDataClient::dispatch_at_cmd(...) {
-
+STATUS NavDataClient::dispatch_at_cmd(at_cmd cmd) {
+	DWORD ret = WaitForSingleObject(at_cmd_client->hMutex, INFINITE);
+	if (ret!=WAIT_OBJECT_0) {
+		return TK_MUTEX_ERROR;
+	}
+	at_cmd_client->add_cmd_to_list(cmd);
+	ReleaseMutex(at_cmd_client->hMutex);
+	return TK_OK;
 }
 
 

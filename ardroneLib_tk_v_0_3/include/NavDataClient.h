@@ -15,6 +15,8 @@
 #pragma once
 
 #include "ATCmdGenerator.h"
+#include "ATCmdClient.h"
+#include "basic_struct.h"
 #include "comdef.h"
 #include <WinSock2.h>
 
@@ -30,11 +32,14 @@ namespace tk {
 		SOCKET nav_sck; // socket for navdata,UDP-5554
 		sockaddr_in nav_sck_addr; // nav_sck_addr
 		bool nav_sck_running; // flag for save the socket status. When socket is aviable, nav_sck_running is true.
-		
+		bool wait_and_recv;
+		ATCmdGenerator* cmd_gen;
+		ATCmdClient* at_cmd_client;
+
 		STATUS init_socket();
 		STATUS send_data(const char* dt,int len);
 	public:
-		NavDataClient(); // set nav_sck_running
+		NavDataClient(ATCmdGenerator* gen,ATCmdClient* client); // set nav_sck_running
 		/**
 		 * @brief init navdata client
 		 */
@@ -50,7 +55,7 @@ namespace tk {
 		/** 
 		 * @brief dispatch At command to ATCmdClient
 		 */
-		STATUS dispatch_at_cmd(...);
+		STATUS dispatch_at_cmd(at_cmd cmd);
 	};
 	/**
 	 * @brief Exit bootstrap mode if the status sent by ardrone indicates that the drone is in bootstrap mode.

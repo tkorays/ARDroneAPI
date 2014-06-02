@@ -9,6 +9,7 @@
 #define NAV_INIT_PKG "\01"
 
 #define MAX_BUFF_SIZE 2048
+#define	WAIT_TIME_OUT 100
 
 
 #define TAKEOFF_CODE         0x11540200
@@ -33,6 +34,8 @@ typedef int STATUS;
 
 #define TK_SOCK_ERROR        50
 #define TK_INVALID_SCK       51
+#define TK_MUTEX_ERROR       52
+#define TK_ATCMD_ERROR       53
 
 
 

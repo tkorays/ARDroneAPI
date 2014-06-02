@@ -106,6 +106,9 @@ string ATCmdGenerator::cmd_control(int a,int b) {
 		CR_DEF);
 	return string(cmd);
 }
+long ATCmdGenerator::get_current_id() {
+	return cmd_id->get_id(false);
+}
 
 // -------------------------------------------------------
 // pack command

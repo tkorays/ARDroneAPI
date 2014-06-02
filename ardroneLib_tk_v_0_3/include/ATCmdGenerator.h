@@ -43,6 +43,7 @@ namespace tk {
 		string cmd_watchdog(); // generate AT command for watchdog
 		string cmd_control(int,int); // generate AT command for controlling
 
+		long get_current_id();
 		// package helper
 
 		/**
