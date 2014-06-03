@@ -85,6 +85,7 @@
     <ClInclude Include="include\helper.h" />
     <ClInclude Include="include\Mutex.h" />
     <ClInclude Include="include\NavDataClient.h" />
+    <ClInclude Include="include\thread_helper.h" />
     <ClInclude Include="include\tk_ardrone.h" />
   </ItemGroup>
   <ItemGroup>
