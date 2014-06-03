@@ -14,6 +14,7 @@
 #define _TK_COMMAND_ID_H_
 #pragma once
 #include "Mutex.h"
+#include "comdef.h"
 
 namespace tk {
 	/**
@@ -26,6 +27,7 @@ namespace tk {
 		Mutex id_mutex;
 	public:
 		CommandId(); // init id = -1
+		~CommandId();
 		void inc(); // inc 
 		void operator++(); // inc operator
 		void reset(); // reset id to -1
@@ -34,7 +36,7 @@ namespace tk {
 		 * @param id auto_inc when "auto_inc" is true
 		 */
 		long get_id(bool auto_inc=true);
-		bool mutex_wait();
+		bool mutex_wait(unsigned long wait_time);
 		bool mutex_unlock();
 		bool mutex_release();
 	};

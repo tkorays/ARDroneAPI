@@ -8,34 +8,29 @@ using namespace tk;
 // 变量a，以及其互斥锁
 int a = 0;
 Mutex mutex_a;
+CommandId cmd_id;
+ATCmdGenerator gen(&cmd_id);
+Mutex mutex_gen;
 
 // 线程函数
 thread_dw_ret th_1_fun(LPVOID param) {
 	while (true) {
-		mutex_a.wait(INF);
-		if (a<1000) {
-			a++;
-		} else {
-			break;
-		}
+		//mutex_gen.wait(INF);
+		string cmd = gen.cmd_watchdog();
 		Sleep(10);
-		cout << a << endl;
-		mutex_a.unlock();
+		cout << gen.get_current_id() << "cmd:"<< cmd << endl;
+		//mutex_gen.unlock();
 	}
 	return 0;
 }
 // 线程函数
 thread_dw_ret th_2_fun(LPVOID param) {
 	while (true) {
-		mutex_a.wait(INF);
-		if (a<1000) {
-			a += 2;
-		} else {
-			break;
-		}
+		//mutex_gen.wait(INF);
+		string cmd = gen.cmd_ftrims();
 		Sleep(10);
-		cout << a << "*" << endl;
-		mutex_a.unlock();
+		cout << gen.get_current_id() << "cmd:" << cmd << endl;
+		//mutex_gen.unlock();
 	}
 	return 0;
 }
@@ -45,6 +40,7 @@ __CLAIM_THREAD_TABLE__
 
 int main(int argc,char** argv) {
 	THREAD_TABLE_EXEC();
+	mutex_a.release();
 	return 0;
 }
 
