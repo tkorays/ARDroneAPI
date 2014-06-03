@@ -7,19 +7,24 @@ using namespace tk;
 
 CommandId cmd_id;
 ATCmdGenerator gen(&cmd_id);
-Mutex mutex_gen;
+
 ATCmdClient at_client;
-Mutex mutex_atc;
+// 某个时间只允许一个线程对ATCmdClient中增加指令，控制使用范围，可以锁定ATCmdGenerator和CommandId
+Mutex mutex_atc; 
+// 传入参数，是为了给ATCmdClient分配指令任务
 NavDataClient nav_client(&gen,&at_client);
 int collect=0;
 
 // 可以直接对ATCmdClient的列表中添加指令
 // 对于其他的类，可能提供了dispatch方法，在调用时候要用互斥锁
 
-// 线程函数
+// 线程函数，产生看门狗指令
 thread_dw_ret th_1_fun(LPVOID param) {
+	// ATCmdClient初始化
 	at_client.init_at_cmd_client();
 	while (true) {
+		// 实际锁定了多个变量，如gen和cmd_id
+		// 主要在其他地方使用这些变量时都要用互斥锁
 		mutex_atc.wait(INF);
 		at_cmd cmd;
 		cmd.cmd = gen.cmd_watchdog();
@@ -29,11 +34,11 @@ thread_dw_ret th_1_fun(LPVOID param) {
 		//at_client.send_at_cmd(gen.cmd_watchdog());
 		at_client.add_cmd_to_list(cmd);
 		mutex_atc.unlock();
-		Sleep(100);
+		Sleep(100); // 让其他线程可以访问
 	}
 	return 0;
 }
-// 线程函数
+// 线程函数，初始化NavClient，如果线程3的ATCmdClient准备好接受数据时，则不断发送一些指令
 thread_dw_ret th_2_fun(LPVOID param) {
 	mutex_atc.wait(INF);
 	nav_client.init_navdata_client();
@@ -53,6 +58,7 @@ thread_dw_ret th_2_fun(LPVOID param) {
 	}
 	return 0;
 }
+// 搜集其他线程发送过来的AT指令，执行
 thread_dw_ret th_3_fun(LPVOID param) {
 	collect = 1;
 	at_client.collect_and_send();
@@ -67,7 +73,6 @@ int main(int argc,char** argv) {
 
 	THREAD_TABLE_EXEC();
 
-	mutex_gen.release();
 	mutex_atc.release();
 
 	net_end();
