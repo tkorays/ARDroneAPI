@@ -37,6 +37,10 @@ namespace tk {
 		 * @brief release mutex
 		 */
 		bool unlock();
+		/** 
+		 * @brief release mutex handle
+		 */
+		bool release();
 	};
 }
 

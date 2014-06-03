@@ -17,3 +17,6 @@ bool Mutex::unlock() {
 	}
 	return true;
 }
+bool Mutex::release() {
+	return ReleaseMutex(mutex)==TRUE;
+}
