@@ -11,8 +11,9 @@ typedef HANDLE Thread_t;
 
 
 /**
-	* @brief impliment a no-return & no-param thread function table
-	*/
+ * @brief impliment a no-return & no-param thread function table
+ */
+
 #define __CLAIM_THREAD_TABLE__ void THREAD_TABLE_EXEC();
 #define THREAD_TABLE_START(thread_num) void THREAD_TABLE_EXEC(){\
 	int t_num = (thread_num); \
