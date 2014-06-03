@@ -4,9 +4,7 @@
 #include <iostream>
 using namespace std;
 // needed by net_* functions
-#include <WinSock2.h>
-#include <IPHlpApi.h>
-
+#include "include/win_inc.h"
 #include "include/comdef.h"
 
 namespace tk {

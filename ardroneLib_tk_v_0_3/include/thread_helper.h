@@ -3,7 +3,7 @@
 #pragma once
 
 #include "comdef.h"
-#include <Windows.h>
+#include "win_inc.h"
 
 #define thread_dw_ret DWORD WINAPI
 

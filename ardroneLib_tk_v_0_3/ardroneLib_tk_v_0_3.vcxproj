@@ -87,6 +87,7 @@
     <ClInclude Include="include\NavDataClient.h" />
     <ClInclude Include="include\thread_helper.h" />
     <ClInclude Include="include\tk_ardrone.h" />
+    <ClInclude Include="include\win_inc.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="ATCmdClient.cpp" />

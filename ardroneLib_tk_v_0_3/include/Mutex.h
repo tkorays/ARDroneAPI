@@ -13,7 +13,7 @@
 #define _TK_MUTEX_H_
 #pragma once
 
-#include <Windows.h>
+#include "win_inc.h"
 
 namespace tk {
 	/** 

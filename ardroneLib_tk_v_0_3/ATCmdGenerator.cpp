@@ -6,7 +6,6 @@ using namespace tk;
 #include <string>
 #include <sstream>
 using namespace std;
-#include <Windows.h>
 
 ATCmdGenerator::ATCmdGenerator(CommandId* cmdid):cmd_id(cmdid) {}
 

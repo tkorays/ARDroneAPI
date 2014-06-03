@@ -48,6 +48,9 @@
     <ClInclude Include="include\thread_helper.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="include\win_inc.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="helper.cpp">
