@@ -95,11 +95,12 @@ STATUS ATCmdClient::collect_and_send() {
 	while (wait_and_send) {
 		
 		// wait until other threads release mutex(don't use cmd_list)
+		/*
 		DWORD ret = WaitForSingleObject(hMutex, INFINITE);
 		if (ret!=WAIT_OBJECT_0) {
 			return TK_MUTEX_ERROR;
 		} // else send cmd
-		
+		*/
 		// initial or no commands
 		if (cmd_list.size()==0) {
 			continue;
@@ -121,9 +122,11 @@ STATUS ATCmdClient::collect_and_send() {
 		}
 		
 		pre_cmd_id++;
+		/*
 		if (!ReleaseMutex(hMutex)) {
 			return TK_MUTEX_ERROR;
 		}
+		*/
 		Sleep(rand() / 50);
 	}
 	return TK_OK;
