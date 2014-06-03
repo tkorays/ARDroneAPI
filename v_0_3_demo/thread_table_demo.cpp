@@ -5,13 +5,12 @@
 #include <string>
 using namespace tk;
 
-typedef HANDLE Thread;
-#define THREAD_RET DWORD WINAPI
-
+// 变量a，以及其互斥锁
 int a = 0;
 Mutex mutex_a;
 
-THREAD_RET th_1_fun(LPVOID param) {
+// 线程函数
+thread_dw_ret th_1_fun(LPVOID param) {
 	while (true) {
 		mutex_a.wait(INF);
 		if (a<1000) {
@@ -25,7 +24,8 @@ THREAD_RET th_1_fun(LPVOID param) {
 	}
 	return 0;
 }
-THREAD_RET th_2_fun(LPVOID param) {
+// 线程函数
+thread_dw_ret th_2_fun(LPVOID param) {
 	while (true) {
 		mutex_a.wait(INF);
 		if (a<1000) {
@@ -40,6 +40,7 @@ THREAD_RET th_2_fun(LPVOID param) {
 	return 0;
 }
 
+// 线程表声明，这样可以把线程表放在main函数后面
 __CLAIM_THREAD_TABLE__
 
 int main(int argc,char** argv) {
@@ -47,6 +48,8 @@ int main(int argc,char** argv) {
 	return 0;
 }
 
+// 线程表，传入线程个数
+// 创建的线程无参数，无返回值等，很简单的一个版本
 THREAD_TABLE_START(2)
 CREATE_THREAD(0, th_1_fun)
 CREATE_THREAD(1, th_2_fun)
