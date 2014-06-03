@@ -20,6 +20,7 @@
 #include "NavDataClient.h"
 #include "ATCmdClient.h"
 #include "Mutex.h"
+#include "thread_helper.h"
 
 
 
