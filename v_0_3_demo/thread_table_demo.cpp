@@ -51,6 +51,7 @@ int main(int argc,char** argv) {
 // 线程表，传入线程个数
 // 创建的线程无参数，无返回值等，很简单的一个版本
 THREAD_TABLE_START(2)
-CREATE_THREAD(0, th_1_fun)
-CREATE_THREAD(1, th_2_fun)
-THREAD_TABLE_END(2)
+CREATE_THREAD(th_1_fun)
+CREATE_THREAD(th_2_fun)
+CREATE_THREAD(th_2_fun)
+THREAD_TABLE_END
