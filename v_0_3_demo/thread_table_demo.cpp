@@ -14,6 +14,7 @@ Mutex mutex_atc;
 // 传入参数，是为了给ATCmdClient分配指令任务
 NavDataClient nav_client(&gen,&at_client);
 int collect=0;
+int atc_ready = 0;
 
 // 可以直接对ATCmdClient的列表中添加指令
 // 对于其他的类，可能提供了dispatch方法，在调用时候要用互斥锁
@@ -22,6 +23,7 @@ int collect=0;
 thread_dw_ret th_1_fun(LPVOID param) {
 	// ATCmdClient初始化
 	at_client.init_at_cmd_client();
+	atc_ready = 1;
 	while (true) {
 		// 实际锁定了多个变量，如gen和cmd_id
 		// 主要在其他地方使用这些变量时都要用互斥锁
@@ -45,7 +47,7 @@ thread_dw_ret th_2_fun(LPVOID param) {
 	mutex_atc.unlock();
 	while (true) {
 		
-		if (collect==0) {
+		if (collect==0 || atc_ready==0) {
 			continue;
 		}
 		mutex_atc.wait(INF);
