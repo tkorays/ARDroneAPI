@@ -13,8 +13,8 @@
 #ifndef _TK_COMMAND_ID_H_
 #define _TK_COMMAND_ID_H_
 #pragma once
-#include "Mutex.h"
 #include "comdef.h"
+#include "win_inc.h"
 
 namespace tk {
 	/**
@@ -24,7 +24,6 @@ namespace tk {
 	class CommandId {
 	private:
 		long id; // the auto-increment number
-		Mutex id_mutex;
 	public:
 		CommandId(); // init id = -1
 		~CommandId();
@@ -36,9 +35,6 @@ namespace tk {
 		 * @param id auto_inc when "auto_inc" is true
 		 */
 		long get_id(bool auto_inc=true);
-		bool mutex_wait(unsigned long wait_time);
-		bool mutex_unlock();
-		bool mutex_release();
 	};
 }
 

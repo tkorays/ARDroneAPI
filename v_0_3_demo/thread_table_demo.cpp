@@ -15,22 +15,22 @@ Mutex mutex_gen;
 // 线程函数
 thread_dw_ret th_1_fun(LPVOID param) {
 	while (true) {
-		//mutex_gen.wait(INF);
+		mutex_gen.wait(INF);
 		string cmd = gen.cmd_watchdog();
 		Sleep(10);
 		cout << gen.get_current_id() << "cmd:"<< cmd << endl;
-		//mutex_gen.unlock();
+		mutex_gen.unlock();
 	}
 	return 0;
 }
 // 线程函数
 thread_dw_ret th_2_fun(LPVOID param) {
 	while (true) {
-		//mutex_gen.wait(INF);
+		mutex_gen.wait(INF);
 		string cmd = gen.cmd_ftrims();
 		Sleep(10);
 		cout << gen.get_current_id() << "cmd:" << cmd << endl;
-		//mutex_gen.unlock();
+		mutex_gen.unlock();
 	}
 	return 0;
 }

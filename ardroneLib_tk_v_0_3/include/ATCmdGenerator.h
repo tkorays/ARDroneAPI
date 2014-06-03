@@ -26,6 +26,7 @@ namespace tk {
 		CommandId* cmd_id; // manage cmd id
 		string cmdpack; // used when pack commands
 	public:
+		
 		/**
 		 * @brief constructor,set CommandId
 		 */
