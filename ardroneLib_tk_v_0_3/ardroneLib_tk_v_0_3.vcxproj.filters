@@ -42,6 +42,9 @@
     <ClInclude Include="include\ATCmdClient.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="include\Mutex.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="helper.cpp">
@@ -57,6 +60,9 @@
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="ATCmdClient.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="Mutex.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>

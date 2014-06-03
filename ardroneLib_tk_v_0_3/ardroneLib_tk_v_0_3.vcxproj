@@ -83,6 +83,7 @@
     <ClInclude Include="include\CommandId.h" />
     <ClInclude Include="include\config.h" />
     <ClInclude Include="include\helper.h" />
+    <ClInclude Include="include\Mutex.h" />
     <ClInclude Include="include\NavDataClient.h" />
     <ClInclude Include="include\tk_ardrone.h" />
   </ItemGroup>
@@ -91,6 +92,7 @@
     <ClCompile Include="ATCmdGenerator.cpp" />
     <ClCompile Include="CommandId.cpp" />
     <ClCompile Include="helper.cpp" />
+    <ClCompile Include="Mutex.cpp" />
     <ClCompile Include="NavDataClient.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
