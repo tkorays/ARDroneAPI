@@ -84,7 +84,10 @@ thread_dw_ret nav_func(LPVOID param) {
 		break;
 	}
 	char data[1024];
-	nav_client.recv_pack(data,1024,show_data);
+	while (true) {
+		nav_client.recv_pack(data, 1024, show_data);
+	}
+	
 
 	return 0;
 }
@@ -118,12 +121,20 @@ THREAD_TABLE_END
 
 void* show_data(void* data) {
 	// 刷数据时候就限制输入指令
-	mutex_atc.wait(INF);
+	//mutex_atc.wait(INF);
+
 	navdata_callback_param* param = (navdata_callback_param*)data;
 	console_color_set(0xE);
-	cout << param->len << endl;
-	cout << "data:" << endl << param->data << endl;
+	int i = 0;
+	char *dt = (char*)(param->data);
+	cout << endl;
+	while ( 24>i) {
+		printf("0x%x ", dt[i]);
+		//cout << (int)dt[i]<<" ";
+		i++;
+	}
+	cout << endl;
 	console_color_reset();
-	mutex_atc.unlock();
+	//mutex_atc.unlock();
 	return (void*)0;
 }
