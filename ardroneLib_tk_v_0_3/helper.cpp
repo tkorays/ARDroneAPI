@@ -81,4 +81,11 @@ namespace tk {
 		bool is_bootstrap = true;
 		return (void*)&is_bootstrap;
 	}
+
+	void console_color_reset() {
+		SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 7 );
+	}
+	void console_color_set(unsigned short color) {
+		SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), color);
+	}
 }
