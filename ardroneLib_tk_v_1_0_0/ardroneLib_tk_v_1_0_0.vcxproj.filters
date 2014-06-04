@@ -42,6 +42,12 @@
     <ClInclude Include="include\win_thread.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="include\ATCmdGenerator.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="include\helper.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="CommandId.cpp">
@@ -51,6 +57,12 @@
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="UdpClient.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="ATCmdGenerator.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="helper.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>

@@ -76,17 +76,21 @@
     <Text Include="ReadMe.txt" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="include\ATCmdGenerator.h" />
     <ClInclude Include="include\basic_struct.h" />
     <ClInclude Include="include\comdef.h" />
     <ClInclude Include="include\CommandId.h" />
     <ClInclude Include="include\config.h" />
+    <ClInclude Include="include\helper.h" />
     <ClInclude Include="include\Mutex.h" />
     <ClInclude Include="include\UdpClient.h" />
     <ClInclude Include="include\win_inc.h" />
     <ClInclude Include="include\win_thread.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="ATCmdGenerator.cpp" />
     <ClCompile Include="CommandId.cpp" />
+    <ClCompile Include="helper.cpp" />
     <ClCompile Include="Mutex.cpp" />
     <ClCompile Include="UdpClient.cpp" />
   </ItemGroup>
