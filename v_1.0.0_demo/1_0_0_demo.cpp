@@ -42,6 +42,8 @@ int main(int argc, char** argv) {
 	nav_client.send(cmd.c_str(), 1);
 	cmd = gen.cmd_control(5, 0);
 	at_client.send(cmd.c_str(), cmd.size());
+	cmd = gen.cmd_config("general:navdata_demo", "TRUE");
+	at_client.send(cmd.c_str(), cmd.size());
 	Sleep(1000);
 	
 	// THREAD_TABLE_EXEC();

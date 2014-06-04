@@ -17,10 +17,12 @@ void callback(void* param) {
 }
 
 int main(int argc,char** argv) {
+	net_prepare();
 	cout << "正在接收数据:" << endl;
 	UdpClient client(ARDRONE_IP,NAVDATA_PORT);
 	char data[128];
 	while (true) {
-		client.recv(data,128,callback);
+		client.recv(data, 128, callback);
 	}
+	net_end();
 }
