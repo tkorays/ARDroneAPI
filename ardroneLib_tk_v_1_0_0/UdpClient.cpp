@@ -3,6 +3,7 @@
 #include "include/basic_struct.h"
 using namespace tk;
 
+// Pimpl实现方法
 class UdpClient::socket_impl {
 private:
 	SOCKET sck;
@@ -61,6 +62,7 @@ public:
 		dp.len = len;
 		dp.data = data;
 		callback(&dp);
+		return true;
 	}
 };
 
@@ -84,6 +86,7 @@ bool UdpClient::reset(const char* ip, short port) {
 	}
 	sck_impl = new socket_impl(ip, port);
 	valid = sck_impl->is_valid();
+	return valid;
 }
 bool UdpClient::is_valid() {
 	return valid;
