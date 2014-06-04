@@ -33,17 +33,19 @@ thread_dw_ret func_2(void* param) {
 }
 
 int main(int argc, char** argv) {
-	/*
-	cout << gen.cmd_takeoff() << endl;
-	cout << gen.cmd_land() << endl;
-
-	gen.clear_pack();
-	gen << gen.cmd_calib(1);
-	gen << gen.cmd_config("shabi", "yes");
-	cout << gen.get_cmd_pack() << endl;
-	*/
-	THREAD_TABLE_EXEC();
-
+	net_prepare();
+	UdpClient at_client(ARDRONE_IP,AT_PORT);
+	UdpClient nav_client(ARDRONE_IP, NAVDATA_PORT);
+	string cmd = gen.cmd_watchdog();
+	at_client.send(cmd.c_str(),cmd.size());
+	cmd = "\1";
+	nav_client.send(cmd.c_str(), 1);
+	cmd = gen.cmd_control(5, 0);
+	at_client.send(cmd.c_str(), cmd.size());
+	Sleep(1000);
+	
+	// THREAD_TABLE_EXEC();
+	net_end();
 	return 0;
 }
 

@@ -11,6 +11,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ardroneLib_tk_v_1_0_0", "ar
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "v_1.0.0_demo", "v_1.0.0_demo\v_1.0.0_demo.vcxproj", "{75B10FF5-22B1-4898-9068-B2055071EF17}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "pack_recv", "pack_recv\pack_recv.vcxproj", "{2F20995C-D13F-4CA1-81B7-4FB6E0E767AD}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Win32 = Debug|Win32
@@ -33,6 +35,10 @@ Global
 		{75B10FF5-22B1-4898-9068-B2055071EF17}.Debug|Win32.Build.0 = Debug|Win32
 		{75B10FF5-22B1-4898-9068-B2055071EF17}.Release|Win32.ActiveCfg = Release|Win32
 		{75B10FF5-22B1-4898-9068-B2055071EF17}.Release|Win32.Build.0 = Release|Win32
+		{2F20995C-D13F-4CA1-81B7-4FB6E0E767AD}.Debug|Win32.ActiveCfg = Debug|Win32
+		{2F20995C-D13F-4CA1-81B7-4FB6E0E767AD}.Debug|Win32.Build.0 = Debug|Win32
+		{2F20995C-D13F-4CA1-81B7-4FB6E0E767AD}.Release|Win32.ActiveCfg = Release|Win32
+		{2F20995C-D13F-4CA1-81B7-4FB6E0E767AD}.Release|Win32.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
