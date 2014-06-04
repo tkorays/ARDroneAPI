@@ -9,8 +9,12 @@ using namespace tk;
 #include <sstream>
 using namespace std;
 
+ATCmdGenerator::ATCmdGenerator() {}
+
 ATCmdGenerator& ATCmdGenerator::Create(CommandId* cmdid) {
 	static ATCmdGenerator at_cmd_gen;
+	at_cmd_gen.cmd_id = cmdid;
+	at_cmd_gen.cmdpack = "";
 	return at_cmd_gen;
 }
 

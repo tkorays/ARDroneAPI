@@ -20,11 +20,11 @@
 #ifndef _TK_ARDRONE_H_
 #define _TK_ARDRONE_H_
 
+#include "config.h"
 #include "CommandId.h"
 #include "ATCmdGenerator.h"
 #include "UdpClient.h"
 #include "Mutex.h"
-#include "config.h"
 #include "helper.h"
 #include "basic_struct.h"
 
