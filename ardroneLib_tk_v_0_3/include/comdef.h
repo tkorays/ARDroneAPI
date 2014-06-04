@@ -8,6 +8,7 @@
 
 #define NAV_INIT_PKG "\01"
 
+#define INF 0xffffffff
 #define MAX_BUFF_SIZE 2048
 #define	WAIT_TIME_OUT 100
 
@@ -36,7 +37,6 @@ typedef int STATUS;
 #define TK_INVALID_SCK       51
 #define TK_MUTEX_ERROR       52
 #define TK_ATCMD_ERROR       53
-
 
 
 #endif // _TK_COMDEF_H_

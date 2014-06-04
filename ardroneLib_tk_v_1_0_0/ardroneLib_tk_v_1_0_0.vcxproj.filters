@@ -15,64 +15,58 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
+    <Text Include="ReadMe.txt" />
+  </ItemGroup>
+  <ItemGroup>
     <ClInclude Include="include\comdef.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="include\helper.h">
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="include\config.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="include\tk_ardrone.h">
+    <ClInclude Include="include\win_inc.h">
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="include\CommandId.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="include\ATCmdGenerator.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="include\NavDataClient.h">
+    <ClInclude Include="include\Mutex.h">
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="include\basic_struct.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="include\ATCmdClient.h">
+    <ClInclude Include="include\UdpClient.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="include\Mutex.h">
+    <ClInclude Include="include\win_thread.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="include\thread_helper.h">
+    <ClInclude Include="include\ATCmdGenerator.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="include\win_inc.h">
+    <ClInclude Include="include\helper.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="include\ardrone.h">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="helper.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
     <ClCompile Include="CommandId.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="ATCmdGenerator.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="NavDataClient.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="ATCmdClient.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="Mutex.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-  </ItemGroup>
-  <ItemGroup>
-    <Text Include="ReadMe.md" />
+    <ClCompile Include="UdpClient.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="ATCmdGenerator.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="helper.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

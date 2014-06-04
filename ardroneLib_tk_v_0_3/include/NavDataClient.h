@@ -18,7 +18,6 @@
 #include "ATCmdClient.h"
 #include "basic_struct.h"
 #include "comdef.h"
-#include <WinSock2.h>
 
 namespace tk {
 	/**

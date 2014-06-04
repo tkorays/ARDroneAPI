@@ -16,8 +16,7 @@
 
 #include "comdef.h"
 #include "basic_struct.h"
-#include <WinSock2.h>
-#include <Windows.h>
+#include "win_inc.h"
 #include <string>
 #include <vector>
 using namespace std;

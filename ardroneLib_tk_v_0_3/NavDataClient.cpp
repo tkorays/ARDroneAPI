@@ -3,7 +3,6 @@
 #include "include/helper.h"
 using namespace tk;
 
-#include <Windows.h>
 
 /////////////////////////////////////////////////////////////////////////
 
@@ -99,12 +98,14 @@ STATUS NavDataClient::recv_pack(char* data, int len, void* (*callback)(void*para
 }
 
 STATUS NavDataClient::dispatch_at_cmd(at_cmd cmd) {
+	/*
 	DWORD ret = WaitForSingleObject(at_cmd_client->hMutex, INFINITE);
 	if (ret!=WAIT_OBJECT_0) {
 		return TK_MUTEX_ERROR;
 	}
+	*/
 	at_cmd_client->add_cmd_to_list(cmd);
-	ReleaseMutex(at_cmd_client->hMutex);
+	// ReleaseMutex(at_cmd_client->hMutex);
 	return TK_OK;
 }
 

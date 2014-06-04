@@ -78,7 +78,7 @@ namespace tk {
 
 	void* bootstrap_check(void* param) {
 
-		bool is_bootstrap = true;
+		const bool is_bootstrap = true;
 		return (void*)&is_bootstrap;
 	}
 

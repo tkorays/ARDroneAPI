@@ -13,6 +13,8 @@
 #ifndef _TK_COMMAND_ID_H_
 #define _TK_COMMAND_ID_H_
 #pragma once
+#include "comdef.h"
+#include "win_inc.h"
 
 namespace tk {
 	/**
@@ -24,6 +26,7 @@ namespace tk {
 		long id; // the auto-increment number
 	public:
 		CommandId(); // init id = -1
+		~CommandId();
 		void inc(); // inc 
 		void operator++(); // inc operator
 		void reset(); // reset id to -1
