@@ -76,6 +76,7 @@
     <Text Include="ReadMe.txt" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="include\ardrone.h" />
     <ClInclude Include="include\ATCmdGenerator.h" />
     <ClInclude Include="include\basic_struct.h" />
     <ClInclude Include="include\comdef.h" />
