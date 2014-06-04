@@ -83,6 +83,7 @@
     <ClInclude Include="include\Mutex.h" />
     <ClInclude Include="include\UdpClient.h" />
     <ClInclude Include="include\win_inc.h" />
+    <ClInclude Include="include\win_thread.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="CommandId.cpp" />
