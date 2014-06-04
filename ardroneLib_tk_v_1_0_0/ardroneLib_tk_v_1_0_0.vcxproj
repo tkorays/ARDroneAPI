@@ -76,6 +76,7 @@
     <Text Include="ReadMe.txt" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="include\basic_struct.h" />
     <ClInclude Include="include\comdef.h" />
     <ClInclude Include="include\CommandId.h" />
     <ClInclude Include="include\config.h" />

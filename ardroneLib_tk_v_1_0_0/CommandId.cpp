@@ -1,12 +1,9 @@
 #include "include/CommandId.h"
 using namespace tk;
 
-// 这些函数为私有，不能直接调用
-CommandId::CommandId() {}
-CommandId::CommandId(const CommandId&) {}
-const CommandId& CommandId::operator=(const CommandId&) {}
 
 // TODO  非线程安全的，需要互斥锁来保证
+// 但是本程序不会一直创建，为了性能考虑，不需要创建。
 CommandId& CommandId::Create() {
 	static CommandId cmdid;
 	cmdid.id = -1;
