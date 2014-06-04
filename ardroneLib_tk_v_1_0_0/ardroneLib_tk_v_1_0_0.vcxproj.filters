@@ -36,12 +36,18 @@
     <ClInclude Include="include\basic_struct.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="include\UdpClient.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="CommandId.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="Mutex.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="UdpClient.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>

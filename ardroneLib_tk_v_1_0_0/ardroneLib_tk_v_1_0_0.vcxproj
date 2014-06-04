@@ -81,11 +81,13 @@
     <ClInclude Include="include\CommandId.h" />
     <ClInclude Include="include\config.h" />
     <ClInclude Include="include\Mutex.h" />
+    <ClInclude Include="include\UdpClient.h" />
     <ClInclude Include="include\win_inc.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="CommandId.cpp" />
     <ClCompile Include="Mutex.cpp" />
+    <ClCompile Include="UdpClient.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
