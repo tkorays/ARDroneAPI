@@ -84,6 +84,7 @@
     <ClInclude Include="include\config.h" />
     <ClInclude Include="include\helper.h" />
     <ClInclude Include="include\Mutex.h" />
+    <ClInclude Include="include\navdata\common.h" />
     <ClInclude Include="include\UdpClient.h" />
     <ClInclude Include="include\win_inc.h" />
     <ClInclude Include="include\win_thread.h" />

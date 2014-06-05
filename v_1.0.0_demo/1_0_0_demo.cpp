@@ -1,5 +1,6 @@
 #pragma comment(lib ,"ardroneLib_tk_v_1_0_0.lib")
 #include <ardrone.h>
+#include <navdata/common.h>
 #include <win_thread.h>
 #include <iostream>
 using namespace tk;
@@ -33,6 +34,8 @@ thread_dw_ret func_2(void* param) {
 }
 
 int main(int argc, char** argv) {
+	cout << NAVDATA_ZIMMU_3000_TAG << endl;
+	cout << NAVDATA_CKS_TAG << endl;
 	net_prepare();
 	UdpClient at_client(ARDRONE_IP,AT_PORT);
 	UdpClient nav_client(ARDRONE_IP, NAVDATA_PORT);
