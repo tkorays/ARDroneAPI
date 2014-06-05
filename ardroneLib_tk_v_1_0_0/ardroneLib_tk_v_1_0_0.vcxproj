@@ -78,6 +78,7 @@
   <ItemGroup>
     <ClInclude Include="include\ardrone.h" />
     <ClInclude Include="include\ATCmdGenerator.h" />
+    <ClInclude Include="include\base\type.h" />
     <ClInclude Include="include\basic_struct.h" />
     <ClInclude Include="include\comdef.h" />
     <ClInclude Include="include\CommandId.h" />
@@ -85,6 +86,7 @@
     <ClInclude Include="include\helper.h" />
     <ClInclude Include="include\Mutex.h" />
     <ClInclude Include="include\navdata\common.h" />
+    <ClInclude Include="include\navdata\navdata_tag.h" />
     <ClInclude Include="include\UdpClient.h" />
     <ClInclude Include="include\win_inc.h" />
     <ClInclude Include="include\win_thread.h" />

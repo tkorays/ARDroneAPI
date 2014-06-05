@@ -54,6 +54,12 @@
     <ClInclude Include="include\navdata\common.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="include\base\type.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="include\navdata\navdata_tag.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="CommandId.cpp">
