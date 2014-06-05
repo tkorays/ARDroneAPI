@@ -37,6 +37,8 @@ int main(int argc, char** argv) {
 	if (recved) {
 		// 如果是bootstrap模式就退出bootstrap模式
 		if (ardrone_get_mask(navdata.ardrone_state,ARDRONE_NAVDATA_BOOTSTRAP)) {
+			cout << "处于bootstrap 模式，正在退出" << endl;
+			// 发送一次不能保证一定能退出...
 			cmd = gen.cmd_config("general:navdata_demo", "TRUE");
 			at_client.send(cmd.c_str(), cmd.size());
 		}
