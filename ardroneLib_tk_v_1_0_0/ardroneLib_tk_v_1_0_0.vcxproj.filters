@@ -60,6 +60,9 @@
     <ClInclude Include="include\navdata\navdata_tag.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="include\navdata\state.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="CommandId.cpp">

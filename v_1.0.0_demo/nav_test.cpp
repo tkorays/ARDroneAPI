@@ -1,6 +1,7 @@
 #pragma comment(lib ,"ardroneLib_tk_v_1_0_0.lib")
 #include <ardrone.h>
 #include <navdata/common.h>
+#include <navdata/state.h>
 #include <win_thread.h>
 #include <iostream>
 using namespace tk;
@@ -18,6 +19,20 @@ void callback(void* param) {
 }
 
 int main(int argc, char** argv) {
+	// stateºÏ—È
+	uint32_t state = 0x4f800c90;
+	ardrone_get_mask(state, ARDRONE_FLY_MASK) ? \
+		cout << "fly" << endl:cout << "not fly" << endl;
+	ardrone_get_mask(state, ARDRONE_VIDEO_MASK) ? \
+		cout << "video on" << endl:cout << "video off" << endl;
+	ardrone_get_mask(state, ARDRONE_VISION_MASK) ? \
+		cout << "vision on" << endl:cout << "vision off" << endl;
+	ardrone_get_mask(state, ARDRONE_NAVDATA_BOOTSTRAP) ? \
+		cout << "is bootstrap" << endl:cout << "not bootstrap" << endl;
+	ardrone_get_mask(state, ARDRONE_NAVDATA_DEMO_MASK) ? \
+		cout << "demo" << endl:cout << "not demo" << endl;
+
+
 	net_prepare();
 
 	UdpClient at_client(ARDRONE_IP, AT_PORT);
@@ -60,24 +75,7 @@ int main(int argc, char** argv) {
 		}
 
 	//}
-
-	int key=0;
-
-	while (key!='x') {
-		key = getchar();
-		switch (key) {
-		case 'j':
-			cmd = gen.cmd_takeoff();
-			at_client.send(cmd.c_str(), cmd.size());
-			break;
-		case 'k':
-			cmd = gen.cmd_land();
-			at_client.send(cmd.c_str(), cmd.size());
-			break;
-		default:
-			break;
-		}
-	}
+	
 	net_end();
 	return 0;
 }
