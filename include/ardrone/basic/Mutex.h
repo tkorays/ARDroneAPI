@@ -15,7 +15,7 @@
 #ifndef _TK_MUTEX_H_
 #define _TK_MUTEX_H_
 
-namespace tk {
+namespace whu {
 	/**
 	 * @var typedef void* mutex_t
 	 * 保存互斥锁指针（或者windows里面的句柄）

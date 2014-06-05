@@ -32,7 +32,7 @@ using namespace std;
 #endif
 #endif
 
-namespace tk {
+namespace whu {
 
 	/**
 	* @brief 32位float与int调整

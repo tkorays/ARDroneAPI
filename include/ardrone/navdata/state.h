@@ -3,7 +3,7 @@
 
 #include "../basic/type.h"
 
-namespace tk {
+namespace whu {
 	typedef enum {
 		ARDRONE_FLY_MASK = 1U << 0,  /*!< FLY MASK : (0) ardrone is landed, (1) ardrone is flying */
 		ARDRONE_VIDEO_MASK = 1U << 1,  /*!< VIDEO MASK : (0) video disable, (1) video enable */

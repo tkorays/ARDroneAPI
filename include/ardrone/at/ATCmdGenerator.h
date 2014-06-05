@@ -16,7 +16,7 @@
 
 #include <string>
 
-namespace tk {
+namespace whu {
 	// CommandIdÉùÃ÷ 
 	class CommandId;
 

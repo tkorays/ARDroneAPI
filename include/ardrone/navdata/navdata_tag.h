@@ -5,7 +5,7 @@
 #define NAVDATA_OPTION_DEMO(STRUCTURE,NAME,TAG)  TAG = 0,
 #define NAVDATA_OPTION(STRUCTURE,NAME,TAG)       TAG ,
 #define NAVDATA_OPTION_CKS(STRUCTURE,NAME,TAG)   NAVDATA_NUM_TAGS, TAG = 0xFFFF
-namespace tk {
+namespace whu {
 	typedef enum _navdata_tag_t {
 		NAVDATA_OPTION_DEMO(navdata_demo_t, navdata_demo, NAVDATA_DEMO_TAG)
 

@@ -15,7 +15,7 @@
 #ifndef _TK_UDPCLIENT_H_
 #define _TK_UDPCLIENT_H_
 
-namespace tk {
+namespace whu {
 	/**
 	* @brief socket÷∏’ÎªÚ’ﬂæ‰±˙
 	*/

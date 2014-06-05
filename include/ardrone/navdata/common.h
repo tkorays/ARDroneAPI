@@ -3,7 +3,7 @@
 
 #include "navdata_tag.h"
 #include "../basic/type.h"
-using namespace tk;
+using namespace whu;
 
 #define NAVDATA_HEADER 0X55667788
 #define NAVDATA_MAX_SIZE 4096

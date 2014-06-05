@@ -7,7 +7,7 @@ using namespace std;
 #include <ardrone/os/win/inc.h>
 #include <ardrone/basic/comdef.h>
 
-namespace tk {
+namespace whu {
 
 	int f32_int32_adjust(const float n) {
 		assert(sizeof(int) == sizeof(float));
