@@ -4,7 +4,7 @@
 #include <ardrone/basic/helper.h>
 #include <ardrone/basic/type.h>
 
-using namespace whu;
+using namespace whu::ardrone;
 
 #include <string>
 #include <sstream>

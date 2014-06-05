@@ -1,7 +1,8 @@
 #include <ardrone/net/UdpClient.h>
 #include <ardrone/os/win/inc.h>
 #include <ardrone/basic/basic_struct.h>
-using namespace whu;
+using whu::UdpClient;
+using namespace whu::ardrone;
 
 // Pimpl实现方法
 class UdpClient::socket_impl {

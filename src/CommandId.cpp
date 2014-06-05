@@ -1,6 +1,6 @@
 #include <ardrone/at/CommandId.h>
 #include <iostream>
-using namespace whu;
+using namespace whu::ardrone;
 
 CommandId::CommandId() {
 	id = -1;
