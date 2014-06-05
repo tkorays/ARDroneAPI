@@ -1,7 +1,7 @@
 #ifndef	_TK_NAVDATA_STATES_H_
 #define _TK_NAVDATA_STATES_H_
 
-#include "../base/type.h"
+#include "../basic/type.h"
 
 namespace tk {
 	typedef enum {

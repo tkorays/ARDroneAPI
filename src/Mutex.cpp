@@ -1,6 +1,8 @@
-#include "include/Mutex.h"
+#include <ardrone/basic/Mutex.h>
 using namespace tk;
-#include "include/win_inc.h"
+
+// 使用windows的一些函数与类型
+#include <ardrone/os/win/inc.h>
 
 Mutex::Mutex() {
 	mutex = nullptr;

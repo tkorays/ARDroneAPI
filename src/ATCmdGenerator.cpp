@@ -1,8 +1,9 @@
-#include "include/ATCmdGenerator.h"
-#include "include/CommandId.h"
-#include "include/comdef.h"
-#include "include/helper.h"
-#include "include/win_inc.h"
+#include <ardrone/at/ATCmdGenerator.h>
+#include <ardrone/at/CommandId.h>
+#include <ardrone/basic/comdef.h>
+#include <ardrone/basic/helper.h>
+#include <ardrone/basic/type.h>
+
 using namespace tk;
 
 #include <string>
@@ -21,19 +22,19 @@ ATCmdGenerator& ATCmdGenerator::Create(CommandId* cmdid) {
 // AT*REF for takeoff
 string ATCmdGenerator::cmd_takeoff() {
 	char cmd[128];
-	sprintf_s(cmd, 128, "AT*REF=%d,%d%c", cmd_id->get_id(true), static_cast<INT32>(TAKEOFF_CODE), CR_DEF);
+	sprintf_s(cmd, 128, "AT*REF=%d,%d%c", cmd_id->get_id(true), static_cast<int32_t>(TAKEOFF_CODE), CR_DEF);
 	return string(cmd);
 }
 // AT*REF for land
 string ATCmdGenerator::cmd_land() {
 	char cmd[128];
-	sprintf_s(cmd, 128, "AT*REF=%d,%d%c", cmd_id->get_id(true), static_cast<INT32>(LAND_CODE), CR_DEF);
+	sprintf_s(cmd, 128, "AT*REF=%d,%d%c", cmd_id->get_id(true), static_cast<int32_t>(LAND_CODE), CR_DEF);
 	return string(cmd);
 }
 // AT*REF for emergency mod
 string ATCmdGenerator::cmd_emergency() {
 	char cmd[128];
-	sprintf_s(cmd, 128, "AT*REF=%d,%d%c", cmd_id->get_id(true), static_cast<INT32>(EMERG_CODE), CR_DEF);
+	sprintf_s(cmd, 128, "AT*REF=%d,%d%c", cmd_id->get_id(true), static_cast<int32_t>(EMERG_CODE), CR_DEF);
 	return string(cmd);
 }
 // AT*PCMD,progrossive command for moving

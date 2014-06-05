@@ -4,8 +4,8 @@
 #include <iostream>
 using namespace std;
 // needed by net_* functions
-#include "include/win_inc.h"
-#include "include/comdef.h"
+#include <ardrone/os/win/inc.h>
+#include <ardrone/basic/comdef.h>
 
 namespace tk {
 

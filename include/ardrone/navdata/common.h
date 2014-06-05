@@ -2,7 +2,7 @@
 #define _TK_NAVDATA_COMMON_H_
 
 #include "navdata_tag.h"
-#include "../base/type.h"
+#include "../basic/type.h"
 using namespace tk;
 
 #define NAVDATA_HEADER 0X55667788
