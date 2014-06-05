@@ -1,7 +1,7 @@
 #ifndef	_TK_BASE_TYPE_H_
 #define _TK_BASE_TYPE_H_
 
-#define ture_t 1
+#define true_t 1
 #define false_t 0
 
 typedef int bool_t;

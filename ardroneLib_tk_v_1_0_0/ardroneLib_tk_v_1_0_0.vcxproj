@@ -87,6 +87,7 @@
     <ClInclude Include="include\Mutex.h" />
     <ClInclude Include="include\navdata\common.h" />
     <ClInclude Include="include\navdata\navdata_tag.h" />
+    <ClInclude Include="include\navdata\state.h" />
     <ClInclude Include="include\UdpClient.h" />
     <ClInclude Include="include\win_inc.h" />
     <ClInclude Include="include\win_thread.h" />
