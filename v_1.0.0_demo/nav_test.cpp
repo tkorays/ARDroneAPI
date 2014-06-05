@@ -61,23 +61,6 @@ int main(int argc, char** argv) {
 
 	//}
 
-	int key=0;
-
-	while (key!='x') {
-		key = getchar();
-		switch (key) {
-		case 'j':
-			cmd = gen.cmd_takeoff();
-			at_client.send(cmd.c_str(), cmd.size());
-			break;
-		case 'k':
-			cmd = gen.cmd_land();
-			at_client.send(cmd.c_str(), cmd.size());
-			break;
-		default:
-			break;
-		}
-	}
 	net_end();
 	return 0;
 }
