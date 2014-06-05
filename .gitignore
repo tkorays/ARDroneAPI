@@ -1,0 +1,13 @@
+# ignore files
+
+# swap files
+
+*.swp
+*.swap
+*~
+
+# test project 
+test_project/
+
+*.obj
+*.exe
