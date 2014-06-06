@@ -87,6 +87,7 @@
     <ClInclude Include="..\..\include\ardrone\basic\basic_struct.h" />
     <ClInclude Include="..\..\include\ardrone\basic\comdef.h" />
     <ClInclude Include="..\..\include\ardrone\basic\helper.h" />
+    <ClInclude Include="..\..\include\ardrone\basic\math.h" />
     <ClInclude Include="..\..\include\ardrone\basic\Mutex.h" />
     <ClInclude Include="..\..\include\ardrone\basic\type.h" />
     <ClInclude Include="..\..\include\ardrone\config.h" />

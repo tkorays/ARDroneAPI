@@ -66,6 +66,9 @@
     <ClInclude Include="..\..\include\ardrone\os\win\thread.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\include\ardrone\basic\math.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\src\ATCmdGenerator.cpp">
