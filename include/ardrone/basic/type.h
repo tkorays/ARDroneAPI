@@ -11,6 +11,8 @@ typedef signed int int32_t;
 typedef unsigned int uint32_t;
 typedef float float32_t;
 typedef int32_t bool_t;
+typedef long int64_t;
+typedef unsigned long uint64_t;
 typedef unsigned char uint8_t;
 
 
