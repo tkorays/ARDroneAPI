@@ -85,10 +85,11 @@
     <ClInclude Include="..\..\include\ardrone\at\ATCmdGenerator.h" />
     <ClInclude Include="..\..\include\ardrone\at\CommandId.h" />
     <ClInclude Include="..\..\include\ardrone\basic\basic_struct.h" />
-    <ClInclude Include="..\..\include\ardrone\basic\comdef.h" />
+    <ClInclude Include="..\..\include\ardrone\basic\com_def.h" />
     <ClInclude Include="..\..\include\ardrone\basic\helper.h" />
     <ClInclude Include="..\..\include\ardrone\basic\math.h" />
     <ClInclude Include="..\..\include\ardrone\basic\Mutex.h" />
+    <ClInclude Include="..\..\include\ardrone\basic\timer.h" />
     <ClInclude Include="..\..\include\ardrone\basic\type.h" />
     <ClInclude Include="..\..\include\ardrone\config.h" />
     <ClInclude Include="..\..\include\ardrone\navdata\common.h" />
@@ -104,6 +105,7 @@
     <ClCompile Include="..\..\src\CommandId.cpp" />
     <ClCompile Include="..\..\src\helper.cpp" />
     <ClCompile Include="..\..\src\Mutex.cpp" />
+    <ClCompile Include="..\..\src\Timer.cpp" />
     <ClCompile Include="..\..\src\UdpClient.cpp" />
     <ClCompile Include="..\..\src\version.cpp" />
   </ItemGroup>

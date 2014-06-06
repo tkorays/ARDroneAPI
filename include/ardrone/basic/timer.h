@@ -9,6 +9,8 @@ namespace whu {
 		Impl* impl;
 		uint32_t interval;
 		bool valid;
+		bool runing;
+		void (*call_fun)(void* param);
 	public:
 		Timer();
 		Timer(uint32_t interval_, void(*call_fun)(void*param),bool auto_start = true);

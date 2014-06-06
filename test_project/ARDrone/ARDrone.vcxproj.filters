@@ -36,9 +36,6 @@
     <ClInclude Include="..\..\include\ardrone\basic\basic_struct.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\include\ardrone\basic\comdef.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\include\ardrone\basic\helper.h">
       <Filter>头文件</Filter>
     </ClInclude>
@@ -69,6 +66,12 @@
     <ClInclude Include="..\..\include\ardrone\basic\math.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\include\ardrone\basic\timer.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\ardrone\basic\com_def.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\src\ATCmdGenerator.cpp">
@@ -87,6 +90,9 @@
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="..\..\src\version.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\Timer.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>
