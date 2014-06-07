@@ -7,7 +7,8 @@
 *~
 
 # test project 
-#test_project/
+test_project/
+lib/*
 
 
 ## Ignore Visual Studio temporary files, build results, and
