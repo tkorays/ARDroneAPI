@@ -14,10 +14,10 @@ $(OUTDIR):
 	if not exitst "$(OUTDIR)/$(NULL)" mkdir $(OUTDIR)
 
 $(OUTDIR)\*.obj: $(SRC)
-	cl.exe $(cflags) $(cvars) /I $(INCDIR) /Fo"$(OUTDIR)\\" /Fd"$(OUTDIR)\\" $(SRC)
+	cl.exe -c /GS /analyze- /W3 /Zc:wchar_t /ZI /Gm /Od /sdl /fp:precise /D "WIN32" /D "_DEBUG" /D "_LIB" /D "_UNICODE" /D "UNICODE" /errorReport:prompt /WX- /Zc:forScope /RTC1 /Gd /Oy- /MDd /EHsc /nologo  /I $(INCDIR) /Fo"$(OUTDIR)\\" /Fd"$(OUTDIR)\\" /Fp"$(OUTDIR)\\"  $(SRC)
 
 $(OUTDIR)\$(TARGET): $(OUTDIR)\*.obj
-	lib.exe /MACHINE:IX86 /OUT:$(TARGET)  $(OBJFILES)  $(conlibs)
+	lib.exe /VERBOSE /MACHINE:X86  /OUT:$(TARGET)  $(OBJFILES)
 
 clean:
 	$(CLEANUP)
