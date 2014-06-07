@@ -60,7 +60,7 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='tkComputer|Win32'">
     <LinkIncremental>true</LinkIncremental>
     <IncludePath>E:\Programing\2014_5\ARDroneAPI\include;$(IncludePath)</IncludePath>
-    <LibraryPath>..\Debug;$(LibraryPath)</LibraryPath>
+    <LibraryPath>E:\Programing\2014_5\ARDroneAPI\test_project\tkComputer;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
