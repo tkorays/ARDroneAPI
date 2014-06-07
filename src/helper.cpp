@@ -5,7 +5,7 @@
 using namespace std;
 // needed by net_* functions
 #include <ardrone/os/win/inc.h>
-#include <ardrone/basic/comdef.h>
+#include <ardrone/basic/com_def.h>
 
 namespace whu {
 	namespace ardrone {
