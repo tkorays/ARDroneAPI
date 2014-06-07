@@ -1,6 +1,6 @@
 #include <ardrone/at/ATCmdGenerator.h>
 #include <ardrone/at/CommandId.h>
-#include <ardrone/basic/comdef.h>
+#include <ardrone/basic/com_def.h>
 #include <ardrone/basic/helper.h>
 #include <ardrone/basic/type.h>
 

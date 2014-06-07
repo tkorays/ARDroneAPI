@@ -9,24 +9,14 @@
       <Configuration>Release</Configuration>
       <Platform>Win32</Platform>
     </ProjectConfiguration>
-    <ProjectConfiguration Include="tkComputer|Win32">
-      <Configuration>tkComputer</Configuration>
-      <Platform>Win32</Platform>
-    </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{53C340A5-5C2D-4F1E-812C-06F19490BECF}</ProjectGuid>
+    <ProjectGuid>{377C5921-97EA-4AF3-84D2-7371D29ED3C9}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
-    <RootNamespace>ARDrone</RootNamespace>
+    <RootNamespace>Lib</RootNamespace>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
-    <ConfigurationType>StaticLibrary</ConfigurationType>
-    <UseDebugLibraries>true</UseDebugLibraries>
-    <PlatformToolset>v120</PlatformToolset>
-    <CharacterSet>Unicode</CharacterSet>
-  </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='tkComputer|Win32'" Label="Configuration">
     <ConfigurationType>StaticLibrary</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
     <PlatformToolset>v120</PlatformToolset>
@@ -45,37 +35,17 @@
   <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
   </ImportGroup>
-  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='tkComputer|Win32'" Label="PropertySheets">
-    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
-  </ImportGroup>
   <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-    <IncludePath>..\..\include;$(IncludePath)</IncludePath>
-  </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='tkComputer|Win32'">
-    <IncludePath>..\..\include;$(IncludePath)</IncludePath>
+    <IncludePath>E:\Programing\2014_5\ARDroneAPI\include;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
-    <IncludePath>..\..\include;$(IncludePath)</IncludePath>
+    <IncludePath>E:\Programing\2014_5\ARDroneAPI\include;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-    <ClCompile>
-      <PrecompiledHeader>
-      </PrecompiledHeader>
-      <WarningLevel>Level3</WarningLevel>
-      <Optimization>Disabled</Optimization>
-      <PreprocessorDefinitions>WIN32;_DEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <SDLCheck>true</SDLCheck>
-    </ClCompile>
-    <Link>
-      <SubSystem>Windows</SubSystem>
-      <GenerateDebugInformation>true</GenerateDebugInformation>
-    </Link>
-  </ItemDefinitionGroup>
-  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='tkComputer|Win32'">
     <ClCompile>
       <PrecompiledHeader>
       </PrecompiledHeader>
@@ -111,33 +81,30 @@
     <Text Include="ReadMe.txt" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\include\ardrone\ardrone.h" />
-    <ClInclude Include="..\..\include\ardrone\at\ATCmdGenerator.h" />
-    <ClInclude Include="..\..\include\ardrone\at\CommandId.h" />
-    <ClInclude Include="..\..\include\ardrone\basic\basic_struct.h" />
-    <ClInclude Include="..\..\include\ardrone\basic\com_def.h" />
-    <ClInclude Include="..\..\include\ardrone\basic\helper.h" />
-    <ClInclude Include="..\..\include\ardrone\basic\math.h" />
-    <ClInclude Include="..\..\include\ardrone\basic\Mutex.h" />
-    <ClInclude Include="..\..\include\ardrone\basic\timer.h" />
-    <ClInclude Include="..\..\include\ardrone\basic\type.h" />
-    <ClInclude Include="..\..\include\ardrone\config.h" />
-    <ClInclude Include="..\..\include\ardrone\navdata\common.h" />
-    <ClInclude Include="..\..\include\ardrone\navdata\navdata_tag.h" />
-    <ClInclude Include="..\..\include\ardrone\navdata\state.h" />
-    <ClInclude Include="..\..\include\ardrone\net\UdpClient.h" />
-    <ClInclude Include="..\..\include\ardrone\os\win\inc.h" />
-    <ClInclude Include="..\..\include\ardrone\os\win\thread.h" />
-    <ClInclude Include="..\..\include\ardrone\version.h" />
+    <ClInclude Include="..\..\..\include\ardrone\ardrone.h" />
+    <ClInclude Include="..\..\..\include\ardrone\at\ATCmdGenerator.h" />
+    <ClInclude Include="..\..\..\include\ardrone\at\CommandId.h" />
+    <ClInclude Include="..\..\..\include\ardrone\basic\basic_struct.h" />
+    <ClInclude Include="..\..\..\include\ardrone\basic\comdef.h" />
+    <ClInclude Include="..\..\..\include\ardrone\basic\helper.h" />
+    <ClInclude Include="..\..\..\include\ardrone\basic\Mutex.h" />
+    <ClInclude Include="..\..\..\include\ardrone\basic\type.h" />
+    <ClInclude Include="..\..\..\include\ardrone\config.h" />
+    <ClInclude Include="..\..\..\include\ardrone\navdata\common.h" />
+    <ClInclude Include="..\..\..\include\ardrone\navdata\navdata_tag.h" />
+    <ClInclude Include="..\..\..\include\ardrone\navdata\state.h" />
+    <ClInclude Include="..\..\..\include\ardrone\net\UdpClient.h" />
+    <ClInclude Include="..\..\..\include\ardrone\os\win\inc.h" />
+    <ClInclude Include="..\..\..\include\ardrone\os\win\thread.h" />
+    <ClInclude Include="..\..\..\include\ardrone\version.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\src\ATCmdGenerator.cpp" />
-    <ClCompile Include="..\..\src\CommandId.cpp" />
-    <ClCompile Include="..\..\src\helper.cpp" />
-    <ClCompile Include="..\..\src\Mutex.cpp" />
-    <ClCompile Include="..\..\src\Timer.cpp" />
-    <ClCompile Include="..\..\src\UdpClient.cpp" />
-    <ClCompile Include="..\..\src\version.cpp" />
+    <ClCompile Include="..\..\..\src\ATCmdGenerator.cpp" />
+    <ClCompile Include="..\..\..\src\CommandId.cpp" />
+    <ClCompile Include="..\..\..\src\helper.cpp" />
+    <ClCompile Include="..\..\..\src\Mutex.cpp" />
+    <ClCompile Include="..\..\..\src\UdpClient.cpp" />
+    <ClCompile Include="..\..\..\src\version.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

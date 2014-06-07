@@ -18,81 +18,72 @@
     <Text Include="ReadMe.txt" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\include\ardrone\ardrone.h">
+    <ClInclude Include="..\..\..\include\ardrone\ardrone.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\include\ardrone\config.h">
+    <ClInclude Include="..\..\..\include\ardrone\os\win\inc.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\include\ardrone\version.h">
+    <ClInclude Include="..\..\..\include\ardrone\os\win\thread.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\include\ardrone\at\ATCmdGenerator.h">
+    <ClInclude Include="..\..\..\include\ardrone\net\UdpClient.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\include\ardrone\at\CommandId.h">
+    <ClInclude Include="..\..\..\include\ardrone\navdata\common.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\include\ardrone\basic\basic_struct.h">
+    <ClInclude Include="..\..\..\include\ardrone\navdata\navdata_tag.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\include\ardrone\basic\helper.h">
+    <ClInclude Include="..\..\..\include\ardrone\navdata\state.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\include\ardrone\basic\Mutex.h">
+    <ClInclude Include="..\..\..\include\ardrone\basic\basic_struct.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\include\ardrone\basic\type.h">
+    <ClInclude Include="..\..\..\include\ardrone\basic\comdef.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\include\ardrone\navdata\common.h">
+    <ClInclude Include="..\..\..\include\ardrone\basic\helper.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\include\ardrone\navdata\navdata_tag.h">
+    <ClInclude Include="..\..\..\include\ardrone\basic\type.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\include\ardrone\navdata\state.h">
+    <ClInclude Include="..\..\..\include\ardrone\at\ATCmdGenerator.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\include\ardrone\net\UdpClient.h">
+    <ClInclude Include="..\..\..\include\ardrone\at\CommandId.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\include\ardrone\os\win\inc.h">
+    <ClInclude Include="..\..\..\include\ardrone\basic\Mutex.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\include\ardrone\os\win\thread.h">
+    <ClInclude Include="..\..\..\include\ardrone\config.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\include\ardrone\basic\math.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\include\ardrone\basic\timer.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\include\ardrone\basic\com_def.h">
+    <ClInclude Include="..\..\..\include\ardrone\version.h">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\src\ATCmdGenerator.cpp">
+    <ClCompile Include="..\..\..\src\ATCmdGenerator.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\src\CommandId.cpp">
+    <ClCompile Include="..\..\..\src\CommandId.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\src\helper.cpp">
+    <ClCompile Include="..\..\..\src\helper.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\src\Mutex.cpp">
+    <ClCompile Include="..\..\..\src\Mutex.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\src\UdpClient.cpp">
+    <ClCompile Include="..\..\..\src\UdpClient.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\src\version.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\src\Timer.cpp">
+    <ClCompile Include="..\..\..\src\version.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>

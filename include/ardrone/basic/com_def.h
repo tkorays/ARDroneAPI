@@ -1,5 +1,5 @@
 /**
- * @file comdef.h
+ * @file com_def.h
  *
  * @brief 基本的宏定义
  *
