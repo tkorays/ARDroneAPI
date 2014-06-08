@@ -1,6 +1,6 @@
 #makefile for msvc using nmake
 
-!include <Win32.Mak>
+#!include <Win32.Mak>
 
 OUTDIR = lib
 INCDIR = include
