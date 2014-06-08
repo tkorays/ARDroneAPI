@@ -18,7 +18,7 @@
 
 #include <string>
 using namespace std;
-#include "comdef.h"
+#include "com_def.h"
 
 
 #ifdef WIN32
