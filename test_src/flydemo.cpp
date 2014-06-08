@@ -36,6 +36,9 @@ void exit_bootstrap(void* param) {
 		gen << gen.cmd_config("general:navdata_demo", "TRUE");
 		genMutex.unlock();
 	}
+	// ACK
+	string cmd = gen.cmd_control(5, 0);
+	atClient->send(cmd.c_str(), cmd.size());
 
 }
 void scan_kb_func(void*) {
@@ -103,9 +106,7 @@ int main(int argc, char** argv) {
 		// 发送指令退出bootstrap
 		navClient.send(cmd.c_str(),cmd.size());
 	}
-	// ACK
-	cmd = gen.cmd_control(5, 0);
-	navClient.send(cmd.c_str(), cmd.size());
+	
 	
 
 	// 初始化完毕，接下来循环读取键盘输入
