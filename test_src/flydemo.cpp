@@ -94,7 +94,7 @@ int main(int argc, char** argv) {
 	/**
 	 * 下面这句为了测试中不阻塞就注释了。
 	 */
-	//navClient.recv(recv_data, 2048, exit_bootstrap);
+	navClient.recv(recv_data, 2048, exit_bootstrap);
 
 	// 对gen的pack操作要上锁
 	genMutex.lock(500);
