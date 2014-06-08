@@ -7,6 +7,8 @@
 #include <ardrone/basic/basic_struct.h>
 #include <ardrone/navdata/common.h>
 #include <ardrone/navdata/state.h>
+#include <ardrone/basic/kbpress.h>
+#include <ardrone/basic/timer.h>
 #include <iostream>
 using namespace std;
 using namespace whu;
@@ -33,6 +35,32 @@ void exit_bootstrap(void* param) {
 	}
 
 }
+void scan_kb_func(void*) {
+	if (key_press(KEY_UP)) {
+		cout << "Up..." << endl;
+		
+	}
+	if (key_press(KEY_DOWN)) {
+		cout << "Down..." << endl;
+		
+	}
+	if (key_press(KEY_LEFT)) {
+		cout << "Left..." << endl;
+		
+	}
+	if (key_press(KEY_RIGHT)) {
+		cout << "Right..." << endl;
+		
+	}
+	if (key_press(KEY_SPACE)) {
+		cout << "Space..." << endl;
+		return;
+	}
+	if (key_press('A')) {
+		cout << "A..." << endl;
+		return;
+	}
+}
 
 int main(int argc, char** argv) {
 	net_prepare();
@@ -44,7 +72,12 @@ int main(int argc, char** argv) {
 	cmd = "\1";
 	// init for navdata
 	navClient.send(cmd.c_str(), cmd.size());
-	navClient.recv(recv_data, 2048, exit_bootstrap);
+
+
+	/**
+	 * 下面这句为了测试中不阻塞就注释了。
+	 */
+	//navClient.recv(recv_data, 2048, exit_bootstrap);
 
 	// 对gen的pack操作要上锁
 	genMutex.lock(500);
@@ -61,10 +94,8 @@ int main(int argc, char** argv) {
 	navClient.send(cmd.c_str(), cmd.size());
 
 	// 初始化完毕，接下来循环读取键盘输入
-
-	while (true) {
-
-	}
+	Timer timer(50,scan_kb_func,nullptr,false);
+	timer.start();
 
 	net_end();
 	return 0;

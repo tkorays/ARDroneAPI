@@ -1,3 +1,6 @@
+#ifndef _TK_KBPRESS_H_
+#define _TK_KBPRESS_H_
+
 #include "../os/win/inc.h"
 
 namespace whu {
@@ -10,5 +13,8 @@ namespace whu {
 		KEY_RETURN = VK_RETURN,
 		// 其他的键值和ASCII一致
 	} KeyBoard;
-	inline bool key_press(int key);
+	bool key_press(int key);
 }
+
+
+#endif // _TK_KBPRESS_H_
