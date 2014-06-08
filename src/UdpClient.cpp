@@ -36,7 +36,7 @@ public:
 	}
 	// socket ÊÇ·ñÓĞĞ§
 	bool is_valid() {
-		return valid;
+		return socket_impl::valid;
 	}
 	bool send(const char* data,int len){
 		if (!valid) {
