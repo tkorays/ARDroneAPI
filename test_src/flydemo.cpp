@@ -107,7 +107,6 @@ int main(int argc, char** argv) {
 	cmd = gen.cmd_control(5, 0);
 	navClient.send(cmd.c_str(), cmd.size());
 	
-	atClient->send("12", 2);
 
 	// 初始化完毕，接下来循环读取键盘输入
 	Timer timer(50,scan_kb_func,nullptr,false);
