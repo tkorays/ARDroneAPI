@@ -18,8 +18,11 @@ using namespace whu::ardrone;
 
 CommandId& cmdid = CommandId::Create();
 ATCmdGenerator& gen = ATCmdGenerator::Create(&cmdid);
+UdpClient* atClient;
 
 Mutex genMutex;
+
+bool on_land = true;
 
 // 生成pack
 void exit_bootstrap(void* param) {
@@ -36,6 +39,7 @@ void exit_bootstrap(void* param) {
 
 }
 void scan_kb_func(void*) {
+	string cmd="";
 	if (key_press(KEY_UP)) {
 		cout << "Up..." << endl;
 		
@@ -53,18 +57,28 @@ void scan_kb_func(void*) {
 		
 	}
 	if (key_press(KEY_SPACE)) {
-		cout << "Space..." << endl;
-		return;
+		if (on_land) {
+			cout << "take of..." << endl;
+			cmd = gen.cmd_takeoff();
+			atClient->send(cmd.c_str(),cmd.size());
+			on_land = false;
+			Timer::sleep(2000);
+		}else {
+			cout << "landing..." << endl;
+			cmd = gen.cmd_land();
+			atClient->send(cmd.c_str(), cmd.size());
+			on_land = true;
+			Timer::sleep(2000);
+		}
 	}
 	if (key_press('A')) {
-		cout << "A..." << endl;
-		return;
+		cout << "A..Emergency" << endl;
 	}
 }
 
 int main(int argc, char** argv) {
 	net_prepare();
-	UdpClient atClient(ARDRONE_IP, AT_PORT);
+	atClient = new UdpClient(ARDRONE_IP, AT_PORT);
 	UdpClient navClient(ARDRONE_IP, NAVDATA_PORT);
 
 	string cmd;
@@ -92,6 +106,8 @@ int main(int argc, char** argv) {
 	// ACK
 	cmd = gen.cmd_control(5, 0);
 	navClient.send(cmd.c_str(), cmd.size());
+	
+	atClient->send("12", 2);
 
 	// 初始化完毕，接下来循环读取键盘输入
 	Timer timer(50,scan_kb_func,nullptr,false);
