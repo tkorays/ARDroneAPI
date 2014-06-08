@@ -19,5 +19,6 @@
 #include <WinSock2.h>
 #include <Windows.h>
 #include <IPHlpApi.h>
+#include <WinUser.h>
 
 #endif // _TK_WIN_INC_H_
