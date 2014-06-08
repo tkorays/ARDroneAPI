@@ -18,6 +18,10 @@ using namespace whu::ardrone;
 #pragma comment(lib,"ARDrone.lib")
 
 UdpClient* recvClient;
+UdpClient* atClient;
+CommandId& cmdid = CommandId::Create();
+ATCmdGenerator& gen = ATCmdGenerator::Create(&cmdid);
+
 void check_option(void* p) {
 	// 前期设计问题...
 
@@ -39,8 +43,13 @@ void data_recv_func(void* param) {
 	cout << "vision: " << nvdt->vision_defined << endl;
 	cout << "编号: 0x" << hex << setw(8) << setfill('0') << nvdt->sequence << endl;
 	cout << "飞行状态:" << (ardrone_get_mask(nvdt->ardrone_state, ARDRONE_FLY_MASK) ? "飞行中" : "不在飞行")<<endl;
-	cout << "模式： " << (ardrone_get_mask(nvdt->ardrone_state, ARDRONE_NAVDATA_BOOTSTRAP) ? "bootstrap模式" : "已经推出bootstrap模式") << endl;
+	cout << "模式： " << (ardrone_get_mask(nvdt->ardrone_state, ARDRONE_NAVDATA_BOOTSTRAP) ? "bootstrap模式" : "已经退出出bootstrap模式") << endl;
+	cout << "demo: " << (ardrone_get_mask(nvdt->ardrone_state, ARDRONE_NAVDATA_DEMO_MASK) ? "demo" : "not demo") << endl;
 	cout << endl;
+	// 发送看门狗，让服务器不断发送数据过来。
+	string cmd = gen.cmd_watchdog();
+	atClient->send(cmd.c_str(), cmd.size());
+	
 }
 
 int main(int argc,char** argv) {
@@ -54,6 +63,21 @@ int main(int argc,char** argv) {
 	}
 	// 接收之前貌似必须得发送一个包到服务器。
 	recvClient->send("\1", 1);
+	Sleep(200);
+
+	/*
+ 	 * 退出demo模式测试
+	 */
+	
+	atClient = new UdpClient(ARDRONE_IP, AT_PORT);
+	// 编号为0,去掉
+	gen.cmd_watchdog();
+	string cmd = gen.cmd_config("general:navdata_demo","TRUE");
+	atClient->send(cmd.c_str(), cmd.size());
+	cmd = gen.cmd_control(5, 0);
+	atClient->send(cmd.c_str(), cmd.size());
+	
+
 	cout << "Recieve data every 50ms.." << endl;
 	Timer timer(100, data_recv_func, nullptr, false);
 	timer.start();
