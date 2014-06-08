@@ -81,14 +81,7 @@ UdpClient::UdpClient(const char* ip, short port) {
 	sck_impl = new socket_impl(ip, port);
 	valid = sck_impl->is_valid();
 }
-bool UdpClient::reset(const char* ip, short port) {
-	if (sck_impl->is_valid()) {
-		delete sck_impl;
-	}
-	sck_impl = new socket_impl(ip, port);
-	valid = sck_impl->is_valid();
-	return valid;
-}
+
 bool UdpClient::is_valid() {
 	return valid;
 }

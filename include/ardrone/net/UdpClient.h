@@ -31,28 +31,20 @@ namespace whu {
 		class socket_impl; ///< socket的具体实现类定义
 		socket_impl* sck_impl; /// socket实现
 		bool valid; ///< udp的socket是否有效
+		UdpClient();
+		UdpClient(const UdpClient&);
+		UdpClient& operator=(const UdpClient&);
 	public:
 		/**
 		* @brief 析构函数
 		*/
 		~UdpClient();
 		/**
-		 * @brief 构造函数
-		 */
-		UdpClient();
-		/**
 		 * @brief 有参数构造函数
 		 * @param ip 服务器ip
 		 * @param port 服务器udp端口
 		 */
 		UdpClient(const char* ip, short port);
-		/** 
-		 * @brief 重新设置udp
-		 * @param ip 服务器ip
-		 * @param port 服务器udp端口
-		 * @return 是否设置成功
-		 */
-		bool reset(const char* ip, short port);
 		/**
 		 * @breif 使udp客户端不可用
 		 */
