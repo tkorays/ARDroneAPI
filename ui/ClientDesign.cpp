@@ -114,6 +114,29 @@ ClientDesign::ClientDesign(wxWindow* parent){
 	ctrl_sizer_4->Add(ctrl_emergency, 0, wxALIGN_LEFT, 5);
 	ctrl_sizer_4->Add(ctrl_down, 0, wxALIGN_LEFT, 5);
 	ctrl_sizer->Add(ctrl_sizer_4, 0, wxALIGN_CENTER | wxALL, 5);
+	// 高级控制
+	wxBoxSizer* adv_ctrl_sizer = new wxBoxSizer(wxVERTICAL);
+	adv_ctrl_sizer->SetMinSize(300, 210);
+	operation->Add(adv_ctrl_sizer);
+	/*
+	wxBitmap* start_up = new wxBitmap("G:/icon/16/arrow-up-double-2.png", wxBITMAP_TYPE_PNG);
+	start_up->SetHeight(20);
+	start_up->SetWidth(20);
+	wxStaticBitmap* ctrl_startup = new wxStaticBitmap(mainPanel,wxID_ANY,*start_up);
+	adv_ctrl_sizer->Add(ctrl_startup);
+	*/
+	wxBoxSizer* adv_ctrl_sizer_1 = new wxBoxSizer(wxHORIZONTAL);
+	wxBoxSizer* adv_ctrl_sizer_2 = new wxBoxSizer(wxHORIZONTAL);
+	wxBoxSizer* adv_ctrl_sizer_3 = new wxBoxSizer(wxHORIZONTAL);
+	wxButton* adv_ctrl_startup = new wxButton(mainPanel, wxID_ANY, _T("开始"));
+	wxButton* adv_ctrl_shutdown = new wxButton(mainPanel, wxID_ANY, _T("关闭"));
+	wxButton* adv_ctrl_hover = new wxButton(mainPanel, wxID_ANY, _T("悬停"));
+	adv_ctrl_sizer_1->Add(adv_ctrl_startup, 0, wxALIGN_LEFT);
+	adv_ctrl_sizer_1->Add(adv_ctrl_shutdown, 0, wxALIGN_LEFT);
+	adv_ctrl_sizer_2->Add(adv_ctrl_hover, 0, wxALIGN_CENTER);
+
+	adv_ctrl_sizer->Add(adv_ctrl_sizer_1, 0, wxALIGN_CENTER | wxALL, 5);
+	adv_ctrl_sizer->Add(adv_ctrl_sizer_2, 0, wxALIGN_CENTER | wxALL, 5);
 
 
 	leftBox->Fit(mainPanel);
