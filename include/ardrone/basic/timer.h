@@ -14,14 +14,14 @@ namespace whu {
 		uint32_t interval; /*!< 执行时间间隔 */
 		bool valid; /*!< 是否可用 */
 		bool runing; /*!< 是否在运行 */
-		void(*func)(void* param); /*!< 回调函数 */
+		bool(*func)(void* param); /*!< 回调函数 */
 		void* func_param; /*!< 回调函数参数 */
 		Timer();
 	public:
 		/**
 		 * @brief 带参数默认构造函数
 		 */
-		Timer(uint32_t interval_, void(*call_func)(void*param), void* param,bool auto_start = true);
+		Timer(uint32_t interval_, bool(*call_func)(void*param), void* param,bool auto_start = true);
 		/**
 		 * @brief 开始
 		 */

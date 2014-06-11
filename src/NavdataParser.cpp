@@ -120,6 +120,9 @@ bool NavdataParser::read_option_list() {
 			idata.num_frames = demo->num_frames;
 			break;
 		}
+		if (option->tag==NAVDATA_CKS_TAG) {
+			break;
+		}
 	}
 	return true;
 }

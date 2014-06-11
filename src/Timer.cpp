@@ -11,7 +11,7 @@ whu::Timer::Timer() {
 	valid = false;
 	runing = false;
 }
-whu::Timer::Timer(uint32_t interval_, void(*call_func)(void*param), void* param, bool auto_start) {
+whu::Timer::Timer(uint32_t interval_, bool(*call_func)(void*param), void* param, bool auto_start) {
 	interval = interval_;
 	runing = false;
 	// 如果调用的函数错误，则返回
@@ -32,15 +32,20 @@ bool whu::Timer::start() {
 	if (!valid || runing) { 
 		return false;
 	}
+	bool conti = true;
 	// 这里貌似不会对参数检验
-	while (true) {
-		func(func_param);
+	while (conti) {
+		conti = func(func_param);
 		Sleep(interval);
 	}
 	
 	return true;
 }
 
+bool whu::Timer::stop() {
+	valid = false;
+	return true;
+}
 
 void Timer::sleep(uint32_t sleep_time) {
 	Sleep(sleep_time);
