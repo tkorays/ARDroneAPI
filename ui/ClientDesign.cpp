@@ -73,12 +73,48 @@ ClientDesign::ClientDesign(wxWindow* parent){
 	wxStaticBitmap* video = new wxStaticBitmap(mainPanel, ID_VIDEO_PLAYER,wxNullBitmap,wxDefaultPosition);
 	video->SetBitmap(*img);
 	leftBox->Add(video , 0, wxALIGN_CENTER_HORIZONTAL | wxALL, 5);
+
 	// 下面添加一些操作选项，这里用一个staticbox
 	wxStaticBoxSizer* operation = new wxStaticBoxSizer(wxHORIZONTAL,mainPanel,_T("操作选项"));
 	operation->SetMinSize(wxSize(630, 230));
-	wxButton* bt_tmp = new wxButton(mainPanel, wxID_ANY, "OK");
-	operation->Add(bt_tmp, 0, wxALIGN_LEFT | wxALL, 5);
 	leftBox->Add(operation, 0, wxALIGN_LEFT | wxALL, 5);
+
+	wxBoxSizer* ctrl_sizer = new wxBoxSizer(wxVERTICAL);
+	ctrl_sizer->SetMinSize(300, 210);
+	operation->Add(ctrl_sizer);
+	// opetion左侧的飞行控制
+	//            <forward>
+	// <left>  <land/takeoff>   <right>
+	//             <back>
+	// <up>      <emergancy>     <down>
+	wxBoxSizer* ctrl_sizer_1 = new wxBoxSizer(wxHORIZONTAL); // front
+	wxButton* ctrl_forward = new wxButton(mainPanel, wxID_ANY, _T("前进"));
+	ctrl_sizer_1->Add(ctrl_forward, 0, wxALIGN_CENTER | wxALL, 5);
+	ctrl_sizer->Add(ctrl_sizer_1, 0, wxALIGN_CENTER | wxALL, 5);
+
+	wxBoxSizer* ctrl_sizer_2 = new wxBoxSizer(wxHORIZONTAL); // left right
+	wxButton* ctrl_left = new wxButton(mainPanel, wxID_ANY, _T("向左"));
+	wxButton* ctrl_land_takeoff = new wxButton(mainPanel, wxID_ANY, _T("起飞/降落"));
+	wxButton* ctrl_right = new wxButton(mainPanel, wxID_ANY, _T("向右"));
+	ctrl_sizer_2->Add(ctrl_left, 0, wxALIGN_LEFT, 5);
+	ctrl_sizer_2->Add(ctrl_land_takeoff, 0, wxALIGN_LEFT, 5);
+	ctrl_sizer_2->Add(ctrl_right, 0, wxALIGN_LEFT, 5);
+	ctrl_sizer->Add(ctrl_sizer_2, 0, wxALIGN_CENTER | wxALL, 5);
+
+	wxBoxSizer* ctrl_sizer_3 = new wxBoxSizer(wxHORIZONTAL);
+	wxButton* ctrl_back = new wxButton(mainPanel, wxID_ANY, _T("后退"));
+	ctrl_sizer_3->Add(ctrl_back, 0, wxALIGN_CENTER | wxALL, 5);
+	ctrl_sizer->Add(ctrl_sizer_3, 0, wxALIGN_CENTER | wxALL, 5);
+
+	wxBoxSizer* ctrl_sizer_4 = new wxBoxSizer(wxHORIZONTAL);
+	wxButton* ctrl_up = new wxButton(mainPanel, wxID_ANY, _T("向上"));
+	wxButton* ctrl_emergency = new wxButton(mainPanel, wxID_ANY, _T("紧急"));
+	wxButton* ctrl_down = new wxButton(mainPanel, wxID_ANY, _T("向下"));
+	ctrl_sizer_4->Add(ctrl_up, 0, wxALIGN_LEFT, 5);
+	ctrl_sizer_4->Add(ctrl_emergency, 0, wxALIGN_LEFT, 5);
+	ctrl_sizer_4->Add(ctrl_down, 0, wxALIGN_LEFT, 5);
+	ctrl_sizer->Add(ctrl_sizer_4, 0, wxALIGN_CENTER | wxALL, 5);
+
 
 	leftBox->Fit(mainPanel);
 
