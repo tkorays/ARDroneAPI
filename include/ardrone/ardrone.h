@@ -14,6 +14,7 @@
 #include "navdata/state.h"
 #include "navdata/NavdataParser.h"
 #include "os/win/thread.h"
+#include "ARDroneClient.h"
 
 
 #endif // _TK_ARDRONE_H_
