@@ -11,6 +11,8 @@ int main(int argc,char** argv){
 	arClient->InitARDrone();
 	// 发送看门狗
 	arClient->SendATCmd(arClient->atgen.cmd_watchdog());
+	// flat trims
+	arClient->SendATCmd(arClient->atgen.cmd_ftrims());
 	// 起飞
 	arClient->SendATCmd(arClient->atgen.cmd_takeoff());
 	// 控制飞行
