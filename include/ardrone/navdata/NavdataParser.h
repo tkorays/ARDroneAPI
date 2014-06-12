@@ -17,6 +17,7 @@ namespace whu{
 			float32_t psi;
 			int32_t altitude;
 			uint32_t num_frames;
+			uint32_t voltage;
 		}Navdata_idata; 
 		/**
 		 * @class NavdataParser NavdataParser.h ardrone/navdata/NavdataParser.h
