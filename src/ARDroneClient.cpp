@@ -22,6 +22,8 @@ bool ARDroneClient::InitARDrone() {
 	navClient->send(cmd.c_str(), 1); // 开始准备接收数据
 	cmd = atgen.cmd_config("general:navdata_demo", "TRUE");
 	atClient->send(cmd.c_str(), cmd.size()); // 退出boostrap模式
+	cmd = atgen.cmd_control(5, 0);
+	atClient->send(cmd.c_str(), cmd.size()); // ack
 	return true;
 }
 

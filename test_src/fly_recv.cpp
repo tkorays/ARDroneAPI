@@ -36,6 +36,10 @@ bool kb_control(void*) {
 	}
 	return true;
 }
+DWORD WINAPI recv_data(PVOID param) {
+
+	return 0;
+}
 
 int main(int argc,char** argv){
 	arClient = new ARDroneClient();
@@ -46,26 +50,7 @@ int main(int argc,char** argv){
 	arClient->SendATCmd(arClient->atgen.cmd_ftrims());
 	// 发送看门狗
 	arClient->SendATCmd(arClient->atgen.cmd_watchdog());
-	/*
-	// 起飞
-	arClient->SendATCmd(arClient->atgen.cmd_takeoff());
-	Timer::sleep(4000);
-	// 控制飞行
-	arClient->SendATCmd(arClient->atgen.cmd_move(true, 0.3f, 0.0f, 0.0f,0.0f));
-	arClient->SendATCmd(arClient->atgen.cmd_move(true, 0.3f, 0.0f, 0.0f, 0.0f));
-	Timer::sleep(2500);
-	arClient->SendATCmd(arClient->atgen.cmd_move(true, 0.3f, 0.0f, 0.0f, 0.0f));
-	Timer::sleep(2000);
-	arClient->SendATCmd(arClient->atgen.cmd_move(true, 0.3f, 0.0f, 0.0f, 0.0f)); Timer::sleep(300);
-	arClient->SendATCmd(arClient->atgen.cmd_move(true, 0.3f, 0.0f, 0.0f, 0.0f)); Timer::sleep(300);
-	arClient->SendATCmd(arClient->atgen.cmd_move(true, 0.3f, 0.0f, 0.0f, 0.0f)); Timer::sleep(300);
-	arClient->SendATCmd(arClient->atgen.cmd_move(true, 0.3f, 0.0f, 0.0f, 0.0f)); Timer::sleep(300);
-	arClient->SendATCmd(arClient->atgen.cmd_move(true, 0.3f, 0.0f, 0.0f, 0.0f)); Timer::sleep(300);
-	arClient->SendATCmd(arClient->atgen.cmd_move(true, 0.3f, 0.0f, 0.0f, 0.0f)); Timer::sleep(300);
-	Timer::sleep(2000);
-	// 降落
-	arClient->SendATCmd(arClient->atgen.cmd_land());
-	*/
+	
 	// 键盘控制
 	Timer timer_ctrl(50,kb_control,nullptr,false);
 	timer_ctrl.start();
