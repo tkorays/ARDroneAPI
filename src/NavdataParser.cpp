@@ -109,7 +109,7 @@ bool NavdataParser::read_option_list() {
 	const navdata_option_t* option = navdt->options;
 	while (true) {
 		if (option->tag==NAVDATA_DEMO_TAG) {
-			const navdata_demo_t* demo = (navdata_demo_t*)option->data;
+			const navdata_demo_t* demo = (navdata_demo_t*)option;
 			idata.vx = demo->vx;
 			idata.vy = demo->vy;
 			idata.vz = demo->vz;
@@ -118,6 +118,7 @@ bool NavdataParser::read_option_list() {
 			idata.psi = demo->psi;
 			idata.altitude = demo->altitude;
 			idata.num_frames = demo->num_frames;
+			idata.voltage = demo->vbat_flying_precentage;
 			break;
 		}
 		if (option->tag==NAVDATA_CKS_TAG) {
