@@ -13,12 +13,13 @@ namespace whu {
 
 		class ARDroneClient {
 		private:
-			UdpClient* atClient;
-			UdpClient* navClient;
+			
 			CommandId& cmdid = CommandId::Create();
 			
 			
 		public:
+			UdpClient* atClient;
+			UdpClient* navClient;
 			ATCmdGenerator& atgen = ATCmdGenerator::Create(&cmdid);
 
 			ARDroneClient();
