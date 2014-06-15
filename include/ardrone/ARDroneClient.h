@@ -15,11 +15,11 @@ namespace whu {
 		private:
 			
 			CommandId& cmdid = CommandId::Create();
-			
-			
-		public:
 			UdpClient* atClient;
 			UdpClient* navClient;
+			
+		public:
+			
 			ATCmdGenerator& atgen = ATCmdGenerator::Create(&cmdid);
 
 			ARDroneClient();
@@ -34,6 +34,8 @@ namespace whu {
 			 * @breif 函数的dt_pack表示数据类型为data_pack
 			 */
 			bool RecvData(void (*handle_func)(void* dt_pack)); 
+
+			void RequestData();
 		};
 	}
 }
