@@ -35,3 +35,7 @@ bool ARDroneClient::RecvData(void(*handle_func)(void* dt_pack)) {
 	char dt[MAX_BUFF_SIZE];
 	return navClient->recv(dt, MAX_BUFF_SIZE, handle_func);
 }
+
+void ARDroneClient::RequestData() {
+	navClient->send("\1", 1);
+}

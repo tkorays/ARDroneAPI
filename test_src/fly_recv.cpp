@@ -72,7 +72,7 @@ DWORD WINAPI recv_data(PVOID param) {
 // 不是看门狗，数据发了一段时间如果不回复，他会停止发送，所以隔一段时间就要发送一次通知
 DWORD WINAPI watch_dog(LPVOID param) {
 	while (true) {
-		arClient->navClient->send("\1", 1);
+		arClient->RequestData(); // 请求数据
 		Timer::sleep(2000);
 	}
 	return 0;
