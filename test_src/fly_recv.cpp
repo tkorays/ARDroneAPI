@@ -1,5 +1,7 @@
 #include <ardrone/ardrone.h>
 #include <iostream>
+#include <sstream>
+#include <fstream>
 #include <iomanip>
 using namespace std;
 
@@ -12,6 +14,8 @@ HANDLE wd_thread;
 DWORD tid;
 ARDroneClient* arClient;
 bool is_onland = true;
+stringstream ss;
+ofstream ofs("data.csv");
 
 bool kb_control(void*) {
 	if (key_press(KEY_SPACE)) {
@@ -59,6 +63,7 @@ void handle_recv_data(void* dt_pck) {
 		printf("vx:\t%f\n", parser.idata.vx);
 		printf("vy:\t%f\n", parser.idata.vy);
 		printf("vz:\t%f\n", parser.idata.vz);
+		ss << parser.idata.altitude << "\n";
 	}
 }
 // 接收机线程，不处理
@@ -96,7 +101,8 @@ int main(int argc,char** argv){
 	// 键盘控制
 	Timer timer_ctrl(50,kb_control,nullptr,false);
 	timer_ctrl.start();
-
+	ofs << ss.str();
+	ofs.close();
 	
 	delete arClient;
 	return 0;
