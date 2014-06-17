@@ -14,7 +14,7 @@
 #ifndef _TK_WIN_THREAD_H_
 #define _TK_WIN_THREAD_H_
 
-#include "com_def.h"
+#include "../../basic/com_def.h"
 #include "inc.h"
 
 #define thread_dw_ret DWORD WINAPI
