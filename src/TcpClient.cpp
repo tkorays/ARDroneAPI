@@ -1,7 +1,8 @@
 #include <ardrone/net/TcpClient.h>
 #include <ardrone/os/win/inc.h>
+#include <ardrone/basic/basic_struct.h>
 using namespace whu;
-//using namespace whu::ardrone;
+using namespace whu::ardrone;
 
 class TcpClient::socket_impl {
 private:
@@ -15,12 +16,42 @@ public:
 		}
 	}
 	socket_impl(const char* ip,short port) {
+		sck = socket(AF_INET, SOCK_STREAM, IPPROTO_TCP);
+		if (sck==INVALID_SOCKET) {
+			valid = false;
+		} else {
+			valid = true;
+		}
+		sckaddr.sin_family = AF_INET;
+		sckaddr.sin_addr.S_un.S_addr = inet_addr(ip);
+		sckaddr.sin_port = ntohs(port);
 
+		int status = connect(sck, (sockaddr*)&sckaddr, sizeof(sockaddr));
+
+		if (status==SOCKET_ERROR) {
+			valid = false;
+		}
 	}
 	bool send(const char* data, int len) {
+		if (!valid) {
+			return false;
+		}
+		int status = ::send(sck, data, len, 0);
+		if (status == SOCKET_ERROR) {
+			return false;
+		}
 		return true;
 	}
 	bool recv(char* data, int len, void(*callback)(void* param)) {
+		if (!valid) {
+			return false;
+		}
+		::recv(sck, data, len, 0);
+		data_pack dp;
+		dp.len = len;
+		dp.data = data;
+		// 用引用！信剑哥，得永生。
+		callback(&dp);
 		return true;
 	}
 	bool is_valid() {
