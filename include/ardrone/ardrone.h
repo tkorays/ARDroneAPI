@@ -10,6 +10,7 @@
 #include "basic/timer.h"
 #include "basic/basic_struct.h"
 #include "net/UdpClient.h"
+#include "net/TcpClient.h"
 #include "navdata/common.h"
 #include "navdata/state.h"
 #include "navdata/NavdataParser.h"
