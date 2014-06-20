@@ -2,6 +2,7 @@
 #include <ardrone/video/video_encapsulation.h>
 using namespace whu::ardrone;
 #include <stdlib.h>
+#include <stdio.h>
 #include <string.h>
 
 VideoEncap::VideoEncap() {
@@ -17,6 +18,9 @@ bool VideoEncap::process(void* tcpdata) {
 	if (pave->signature[0]=='P' && pave->signature[1]=='a'\
 		&& pave->signature[2]=='V' && pave->signature[3]=='E') {
 		data_size = pave->payload_size;
+
+		printf("frame number:%d\n", pave->frame_number);
+
 		if (data) {
 			free(data);
 			// 释放时总是将指针知道0，防止野指针
@@ -37,6 +41,7 @@ bool VideoEncap::process(void* tcpdata) {
 		if (data_size-data_index<=TcpPackSize) {
 			memcpy((char*)data + data_index, (char*)tcpdata, data_size - data_index);
 			// don't care about data_index
+			data_index += (data_size - data_index);
 			return true;
 		}
 		// else，否则直接复制数据就是了
@@ -44,4 +49,7 @@ bool VideoEncap::process(void* tcpdata) {
 		data_index += TcpPackSize;
 		return false;
 	}
+}
+void* VideoEncap::get_data() {
+	return data;
 }

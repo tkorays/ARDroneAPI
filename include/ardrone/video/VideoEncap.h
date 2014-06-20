@@ -33,6 +33,8 @@ namespace whu {
 			 * @return 处理完成
 			 */
 			bool process(void* tcpdata);
+
+			void* get_data();
 		};
 	}
 }
