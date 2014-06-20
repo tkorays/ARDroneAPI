@@ -18,9 +18,9 @@ public:
 	socket_impl(const char* ip,short port) {
 		sck = socket(AF_INET, SOCK_STREAM, IPPROTO_TCP);
 		if (sck==INVALID_SOCKET) {
-			valid = false;
+			socket_impl::valid = false;
 		} else {
-			valid = true;
+			socket_impl::valid = true;
 		}
 		sckaddr.sin_family = AF_INET;
 		sckaddr.sin_addr.S_un.S_addr = inet_addr(ip);
@@ -55,7 +55,7 @@ public:
 		return true;
 	}
 	bool is_valid() {
-		return valid;
+		return socket_impl::valid;
 	}
 };
 // ------------------------------------------------------
