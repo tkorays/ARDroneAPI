@@ -34,7 +34,7 @@ namespace whu {
 			 * @return 处理完成
 			 */
 			bool process(void* tcpdata);
-
+			int get_data_size();
 			void* get_data();
 		};
 	}

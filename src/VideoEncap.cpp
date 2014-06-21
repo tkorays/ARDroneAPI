@@ -64,3 +64,6 @@ bool VideoEncap::process(void* tcpdata) {
 void* VideoEncap::get_data() {
 	return data;
 }
+int VideoEncap::get_data_size() {
+	return data_size;
+}
