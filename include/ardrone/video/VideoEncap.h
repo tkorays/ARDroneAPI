@@ -23,6 +23,7 @@ namespace whu {
 			void* data; // 得到的视频数据
 			int data_index; // 当前视频内部数据索引，用于复制数据
 			int data_size;
+			bool data_over;
 		public:
 			VideoEncap();
 			/*!< tcp包的大小 */
