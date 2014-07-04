@@ -43,10 +43,10 @@ bool VideoEncap::process(void* tcpdata) {
 
 		// 最后一个,剩下的数据<=1460
 		if (data_size-data_index<=TcpPackSize) {
-			if (data_over) {
-				perror("wrong data");
-				return false; // 不处理这个数据
-			}
+			//if (data_over) {
+			//	perror("wrong data");
+			//	return false; // 不处理这个数据
+			//}
 			memcpy((char*)data + data_index, (char*)tcpdata, data_size - data_index);
 			// don't care about data_index
 			data_index += (data_size - data_index);
