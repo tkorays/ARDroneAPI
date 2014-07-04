@@ -51,7 +51,9 @@ public:
 		dp.len = len;
 		dp.data = data;
 		// 用引用！信剑哥，得永生。
-		callback(&dp);
+		if (callback) {
+			callback(&dp);
+		}
 		return true;
 	}
 	bool is_valid() {
