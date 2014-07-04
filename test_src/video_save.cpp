@@ -29,7 +29,7 @@ int main(int argc, char** argv) {
 	char* buf = (char*)malloc(max_buf_size);
 	VideoEncap encap;
 	while (true) {
-		if (count>233300) {
+		if (count>12233300) {
 			break;
 		}
 		videoClient->recv(buf, max_buf_size, NULL);
