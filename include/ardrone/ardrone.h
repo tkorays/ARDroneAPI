@@ -16,6 +16,9 @@
 #include "navdata/NavdataParser.h"
 #include "os/win/thread.h"
 #include "ARDroneClient.h"
+#include "video/video_encapsulation.h"
+#include "video/VideoEncap.h"
+#include "basic/fixit.h"
 
 
 #endif // _TK_ARDRONE_H_
