@@ -14,6 +14,7 @@ typedef int32_t bool_t;
 typedef long int64_t;
 typedef unsigned long uint64_t;
 typedef unsigned char uint8_t;
+typedef unsigned char uchar;
 
 
 #endif // _TK_BASE_TYPE_H_
