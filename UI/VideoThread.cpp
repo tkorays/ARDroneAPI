@@ -11,16 +11,9 @@ extern "C"
 #ifdef HAVE_AV_CONFIG_H
 #undef HAVE_AV_CONFIG_H
 #endif
-#include <libavutil/opt.h>
 #include <libavcodec/avcodec.h>
-#include <libavutil/channel_layout.h>
-#include <libavutil/common.h>
-#include <libavutil/imgutils.h>
-#include <libavutil/mathematics.h>
-#include <libavutil/samplefmt.h>
 #include <libavformat/avformat.h>
 #include <libswscale/swscale.h>
-#include <libavdevice/avdevice.h>
 #include <SDL.h>
 }
 
