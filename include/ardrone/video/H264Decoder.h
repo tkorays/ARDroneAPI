@@ -27,12 +27,16 @@ namespace whu{
 		uint8_t* buffer;
 		uint8_t* avio_ctx_buffer;
 		size_t buffer_size;
-		size_t avio_ctx_buffer_size;
+		int avio_ctx_buffer_size;
+		uint8_t* out_buffer;
+		AVPacket* packet;
 
-		struct buffer_data bd;
-
+		
+		bool isOpen;
 		bool valid;
+		int skip;
 	public:
+		struct buffer_data bd;
 		H264Decoder();
 		~H264Decoder();
 		bool is_ok();
