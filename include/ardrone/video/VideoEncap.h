@@ -35,7 +35,7 @@ namespace whu {
 			 */
 			bool process(void* tcpdata);
 			int get_data_size();
-			void* get_data();
+			void* get_data() const;
 		};
 	}
 }
