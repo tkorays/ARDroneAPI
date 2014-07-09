@@ -29,16 +29,19 @@ int main(int argc, char** argv) {
 	char* buf = (char*)malloc(max_buf_size);
 	VideoEncap encap;
 	while (true) {
-		if (count>300) {
+		if (count>1500) {
 			break;
 		}
+		
 		videoClient->recv(buf, max_buf_size, NULL);
+		videoIO.write((char*)buf, max_buf_size);
 		//vardump_hex(buf, max_buf_size); // output the data (hex format)
-		if (encap.process(buf)) {
-			videoIO.write((char*)encap.get_data(), encap.get_data_size());
-			count++;
+		//if (encap.process(buf)) {
+		//	videoIO.write((char*)encap.get_data(), encap.get_data_size());
+		//	count++;
 			//vardump_hex(encap.get_data(), encap.get_data_size());
-		}
+		//}
+		count++;
 	}
 	videoIO.close();
 	net_end();
