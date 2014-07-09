@@ -49,28 +49,9 @@ int main(){
 
 	while (true) {
 		videoClient->recv(buf, max_buf_size, NULL);
-		//h264.process(buf, max_buf_size, show);
 		//vardump_hex(buf, max_buf_size); // output the data (hex format)
 		if (encap.process(buf)) {
-			//mutex.lock(100);
-			//h264.bd.ptr = (uint8_t*)encap.get_data();
-			//h264.bd.size = encap.get_data_size();
-			//mutex.unlock();
 			h264.process(encap.get_data(), encap.get_data_size(), show);
-			//printf("--------->%d\n", encap.get_data_size());
-			/*
-			if (cnt%10 == 9){
-				h264.process(frame_data, size, show);
-				size = 0;
-				memset(frame_data, 0, 102400);
-				cnt++;
-			}
-			else{
-				memcpy((char*)frame_data + size, encap.get_data(), encap.get_data_size());
-				size += encap.get_data_size();
-				cnt++;
-			}
-			*/
 			
 			//vardump_hex(encap.get_data(), encap.get_data_size());
 		}
