@@ -41,6 +41,12 @@ bool kb_control(void*) {
 	if (key_press(KEY_DOWN)) {
 		arClient->SendATCmd(arClient->atgen.cmd_move(true, 0.0f, 0.2f, 0.0f, 0.0f));
 	}
+	if (key_press(VK_ESCAPE)) {
+		arClient->SendATCmd (arClient->atgen.cmd_move (true, 0.0f, 0.0f, 0.0f, 0.5f));
+	}
+	if (key_press ('A')) {
+		arClient->SendATCmd (arClient->atgen.cmd_move (true, 0.0f, 0.0f, 0.2f, 0.0f));
+	}
 	if (key_press(KEY_RETURN)) {
 		CloseHandle(recv_thread);
 		CloseHandle(wd_thread);
