@@ -10,6 +10,7 @@ extern "C"{
 using namespace whu;
 
 
+
 static int read_packet(void *opaque, uint8_t *buf, int buf_size)
 {
 	struct buffer_data *bd = (struct buffer_data *)opaque;
@@ -91,6 +92,7 @@ void H264Decoder::process(void* data, int size, void(*callback)(void*p)){
 	int got_picture;
 	while (av_read_frame(pFormatCtx, packet) >= 0)
 	{
+		
 		//printf("packet id:%d\n", packet->stream_index); 
 		if (packet->stream_index!=0)
 		{
@@ -106,8 +108,14 @@ void H264Decoder::process(void* data, int size, void(*callback)(void*p)){
 			sws_scale(img_convert_ctx, (const uint8_t* const*)pFrame->data, pFrame->linesize, 0, pCodecCtx->height, pFrameYUV->data, pFrameYUV->linesize);
 			sws_freeContext(img_convert_ctx);
 			if (callback){
+				uint8_t tmp;
+				for (size_t i = 0; i < pCodecCtx->width*pCodecCtx->height*3; i+=3){
+					tmp = pFrameYUV->data[0][i];
+					pFrameYUV->data[0][i] = pFrameYUV->data[0][i + 2];
+					pFrameYUV->data[0][i + 2] = tmp;
+				}
 				callback((pFrameYUV->data[0]));
-
+				Sleep(33);
 			}
 		}
 		
