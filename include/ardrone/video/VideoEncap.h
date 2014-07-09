@@ -24,6 +24,10 @@ namespace whu {
 			int data_index; // 当前视频内部数据索引，用于复制数据
 			int data_size;
 			bool data_over;
+			char left_buf[1460*2];
+			int left_size;
+
+			void handle_left(void* tcpdata);
 		public:
 			VideoEncap();
 			/*!< tcp包的大小 */
@@ -34,6 +38,7 @@ namespace whu {
 			 * @return 处理完成
 			 */
 			bool process(void* tcpdata);
+			bool get_h264(void* tcpdata);
 			int get_data_size();
 			void* get_data() const;
 		};
