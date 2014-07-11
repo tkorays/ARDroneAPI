@@ -28,7 +28,7 @@ H264Decoder::H264Decoder(){
 	pIOCtx = NULL;
 	buffer = NULL;
 	avio_ctx_buffer = NULL;
-	avio_ctx_buffer_size = 640*360;
+	avio_ctx_buffer_size = 326780;
 	bd = { 0 };
 
 	av_register_all(); // 注册所有组件
@@ -46,6 +46,22 @@ H264Decoder::H264Decoder(){
 		return;
 	}
 	pCodec = avcodec_find_decoder(AV_CODEC_ID_H264);
+
+	pCodecCtx = avcodec_alloc_context3 (pCodec);
+	pCodecCtx->pix_fmt = PIX_FMT_RGB24;
+	pCodecCtx->skip_frame = AVDISCARD_DEFAULT;
+	pCodecCtx->error_concealment = FF_EC_GUESS_MVS | FF_EC_DEBLOCK;
+	pCodecCtx->skip_loop_filter = AVDISCARD_DEFAULT;
+	pCodecCtx->workaround_bugs = FF_BUG_AUTODETECT;
+	pCodecCtx->codec_type = AVMEDIA_TYPE_VIDEO;
+	pCodecCtx->codec_id = CODEC_ID_H264;
+	pCodecCtx->skip_idct = AVDISCARD_DEFAULT;
+
+	if (avcodec_open2(pCodecCtx,pCodec,NULL)<0) {
+		valid = false;
+		return;
+	}
+
 	pFrame = av_frame_alloc();
 	pFrameYUV = av_frame_alloc();
 	valid = true;
@@ -53,15 +69,25 @@ H264Decoder::H264Decoder(){
 	pIOCtx = avio_alloc_context(avio_ctx_buffer, avio_ctx_buffer_size, 0, &bd, &read_packet, NULL, NULL);
 	pFormatCtx->pb = pIOCtx;
 
+	img_data = malloc(640*360*3);
+
+	
+	out_buffer = new uint8_t[avpicture_get_size (PIX_FMT_RGB24, 640, 360)];
+	packet = (AVPacket*)malloc (sizeof(AVPacket));
+	av_new_packet (packet, 640*360);
+	avpicture_fill ((AVPicture *)pFrameYUV, out_buffer, PIX_FMT_RGB24, 640, 360);
 }
 void H264Decoder::process(void* data, int size, void(*callback)(void*p)){
 	bd.ptr = (uint8_t*)data;
 	bd.size = size;
-	
 	int ret;
 	if (!isOpen)
 	{
 		ret = avformat_open_input(&pFormatCtx, NULL, NULL, NULL);
+		pFormatCtx->probesize = 204800;
+		pFormatCtx->max_analyze_duration = 5 * AV_TIME_BASE;
+		//pFormatCtx->bit_rate = 1200000;
+		//pFormatCtx->flags = AVFMT_FLAG_GENPTS;
 		if (ret<0){
 			return;
 		}
@@ -70,30 +96,25 @@ void H264Decoder::process(void* data, int size, void(*callback)(void*p)){
 		if (ret<0){
 			return;
 		}
-		pCodecCtx = pFormatCtx->streams[0]->codec;
-		if (avcodec_open2(pCodecCtx, pCodec, NULL) < 0) {
-			printf("could not open codec\n");
-		}
-		if (pCodec->capabilities&CODEC_CAP_TRUNCATED) {
-			pCodecCtx->flags |= CODEC_FLAG_TRUNCATED;
-		}
-		out_buffer = new uint8_t[avpicture_get_size(PIX_FMT_RGB24, pCodecCtx->width, pCodecCtx->height)];
-		packet = (AVPacket*)malloc(sizeof(AVPacket));
-		av_new_packet(packet, pCodecCtx->width*pCodecCtx->height);
-		avpicture_fill((AVPicture *)pFrameYUV, out_buffer, PIX_FMT_RGB24, pCodecCtx->width, pCodecCtx->height);
-
+		//pCodecCtx = pFormatCtx->streams[0]->codec;
+		//pCodecCtx->codec_type = AVMEDIA_TYPE_VIDEO;
+		//if (avcodec_open2(pCodecCtx, pCodec, NULL) < 0) {
+		//	printf("could not open codec\n");
+		//}
+		//if (pCodec->capabilities&CODEC_CAP_TRUNCATED) {
+		//	pCodecCtx->flags |= CODEC_FLAG_TRUNCATED;
+		//}
+		
+		
+		//av_dump_format (pFormatCtx, 0, "", 0);
 		isOpen = true;
 	}
 	
-	//av_dump_format(pFormatCtx, 0, "", 0);
-	//Sleep(40);
-	
 	static struct SwsContext *img_convert_ctx;
+	
 	int got_picture;
 	while (av_read_frame(pFormatCtx, packet) >= 0)
 	{
-		
-		//printf("packet id:%d\n", packet->stream_index); 
 		if (packet->stream_index!=0)
 		{
 			return;
@@ -102,9 +123,8 @@ void H264Decoder::process(void* data, int size, void(*callback)(void*p)){
 		if (len < 0) {
 			return;
 		}
-		//printf("got frame:%d\n", got_picture);
 		if (got_picture) {
-			img_convert_ctx = sws_getContext(pCodecCtx->width, pCodecCtx->height, pCodecCtx->pix_fmt, pCodecCtx->width, pCodecCtx->height, PIX_FMT_RGB24, SWS_BICUBIC, NULL, NULL, NULL);
+			img_convert_ctx = sws_getContext (640, 360, pCodecCtx->pix_fmt, 640, 360, PIX_FMT_RGB24, SWS_BICUBIC, NULL, NULL, NULL);
 			sws_scale(img_convert_ctx, (const uint8_t* const*)pFrame->data, pFrame->linesize, 0, pCodecCtx->height, pFrameYUV->data, pFrameYUV->linesize);
 			sws_freeContext(img_convert_ctx);
 			if (callback){
@@ -114,9 +134,11 @@ void H264Decoder::process(void* data, int size, void(*callback)(void*p)){
 					pFrameYUV->data[0][i] = pFrameYUV->data[0][i + 2];
 					pFrameYUV->data[0][i + 2] = tmp;
 				}
+				
 				callback((pFrameYUV->data[0]));
-				Sleep(33);
 			}
+			memcpy (img_data, pFrameYUV->data[0], 640 * 360);
+			//data = pFrameYUV->data[0];
 		}
 		
 	}

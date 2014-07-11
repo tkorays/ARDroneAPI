@@ -32,6 +32,7 @@ namespace whu {
 		bool is_valid();
 		bool send(const char* data, int len);
 		bool recv(char* data, int len, void(*callback)(void*param));
+		bool reconnect ();
 	};
 }
 

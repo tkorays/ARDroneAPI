@@ -3,6 +3,7 @@
 using namespace cv;
 
 #include <ardrone/ardrone.h>
+#include <ardrone/video/H264.h>
 #pragma comment(lib,"ARDrone.lib")
 using namespace whu;
 using namespace whu::ardrone;
@@ -15,14 +16,16 @@ whu::Mutex mutex;
 void show(void* data){
 	img.data = (uchar*)data;
 	imshow("img", img);
-	waitKey(33);
+	waitKey (1);
 }
 DWORD WINAPI h264_show(void*){
 	while (true)
 	{
-		mutex.lock(100);
-		h264.process(encap.get_data(), encap.get_data_size(), show);
-		mutex.unlock();
+		if (h264.data_ready) {
+			img.data = (uchar*)h264.img_data;
+			imshow ("img", img);
+			waitKey (1);
+		}
 	}
 	
 	return 0;
@@ -43,21 +46,26 @@ int main(){
 	}
 	const int max_buf_size = VideoEncap::TcpPackSize;
 	char* buf = (char*)malloc(max_buf_size);
+	H264 h;
 	
 	//DWORD tid;
 	//HANDLE hShow = CreateThread(NULL, 0, h264_show, NULL, 0, &tid);
 
 	while (true) {
 		videoClient->recv(buf, max_buf_size, NULL);
-		//vardump_hex(buf, max_buf_size); // output the data (hex format)
-		if (encap.process(buf)) {
-			h264.process(encap.get_data(), encap.get_data_size(), show);
-			
-			//vardump_hex(encap.get_data(), encap.get_data_size());
-		}
-	}
+		h.add ((unsigned char*)buf, max_buf_size);
+		img.data = (uchar*)h.getImage ();
+		imshow ("img", img);
 
-	
+		//vardump_hex(buf, max_buf_size); // output the data (hex format)
+		//if (encap.get_h264(buf)) {
+			//h264.process(encap.get_data(), encap.get_data_size(), show);
+			//vardump_hex(encap.get_data(), 10);
+			//h.addFrame ((unsigned char*)encap.get_data (), encap.get_data_size ());
+			
+		//}
+		waitKey (1);
+	}
 	net_end();
 	return 0;
 }

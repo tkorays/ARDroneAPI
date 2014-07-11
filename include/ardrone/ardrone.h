@@ -20,5 +20,6 @@
 #include "video/VideoEncap.h"
 #include "video/H264Decoder.h"
 #include "basic/fixit.h"
+#include "video/H264.h"
 
 #endif // _TK_ARDRONE_H_

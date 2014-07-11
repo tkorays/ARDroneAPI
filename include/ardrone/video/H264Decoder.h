@@ -32,6 +32,7 @@ namespace whu{
 		AVPacket* packet;
 
 		
+
 		bool isOpen;
 		bool valid;
 		int skip;
@@ -41,6 +42,8 @@ namespace whu{
 		~H264Decoder();
 		bool is_ok();
 		void process(void* data, int size, void(*callback)(void*p));
+		void* img_data;
+		bool data_ready;
 	};
 }
 #endif // _TK_H264DECODER_H_

@@ -46,7 +46,10 @@ public:
 		if (!valid) {
 			return false;
 		}
-		::recv(sck, data, len, 0);
+		if (::recv (sck, data, len, 0) < 0) {
+			valid = false;
+			return false;
+		}
 		data_pack dp;
 		dp.len = len;
 		dp.data = data;
@@ -58,6 +61,15 @@ public:
 	}
 	bool is_valid() {
 		return socket_impl::valid;
+	}
+	bool reconnect () {
+		int status = connect (sck, (sockaddr*)&sckaddr, sizeof(sockaddr));
+		valid = true;
+		if (status == SOCKET_ERROR) {
+			valid = false;
+			return false;
+		}
+		return true;
 	}
 };
 // ------------------------------------------------------
@@ -80,4 +92,7 @@ bool TcpClient::send(const char* data, int len) {
 }
 bool TcpClient::recv(char* data, int len, void(*callback)(void* param)) {
 	return sck_impl->recv(data, len, callback);
+}
+bool TcpClient::reconnect () {
+	return sck_impl->reconnect ();
 }
