@@ -64,7 +64,7 @@ int main(){
 			//h.addFrame ((unsigned char*)encap.get_data (), encap.get_data_size ());
 			
 		//}
-		waitKey (1);
+		waitKey (20);
 	}
 	net_end();
 	return 0;
